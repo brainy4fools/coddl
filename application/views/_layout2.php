@@ -50,6 +50,9 @@
 
     <!-- responsive lightbox -->
    <link rel="stylesheet" type="text/css" href="<?php echo (base_url());?>Responsive-Lightbox/jquery.lightbox.css">
+
+   <!-- responsive lightbox -->
+   <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/coddl/coddl.css" type="text/css">
  
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 
@@ -242,7 +245,7 @@ h1,h2,h3,h4,h5{
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  margin-top: 5px;
+  margin-top: 25px;
   padding-bottom: 20px;
 
 }
@@ -504,7 +507,7 @@ h1,h2,h3,h4,h5{
             font-family: 'Varela Round', sans-serif;
             font-size: 18px;
             line-height: 1.8em;
-            color: #222;
+            color: #<?php echo $theme['fontcolor']; ?>;
             -webkit-font-smoothing: antialiased;
             
             
@@ -521,7 +524,7 @@ h1,h2,h3,h4,h5{
         }
         .footer-brand {
             color: #666;
-            font-size: 16px;
+            
 
         }
         .phone-number-bar {

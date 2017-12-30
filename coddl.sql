@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Dec 28, 2017 at 11:26 AM
+-- Generation Time: Dec 30, 2017 at 10:06 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.5.18
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `template`
+-- Database: `coddl`
 --
 
 -- --------------------------------------------------------
@@ -38,7 +38,19 @@ CREATE TABLE `IGS_assetfields` (
   `url` varchar(200) NOT NULL,
   `thumb` varchar(300) NOT NULL,
   `fieldname` varchar(200) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=204 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `IGS_assetfields`
+--
+
+INSERT INTO `IGS_assetfields` (`id`, `entryid`, `filename`, `kind`, `width`, `height`, `size`, `datecreated`, `url`, `thumb`, `fieldname`) VALUES
+(198, 204, 'Screen_Shot_2017-12-30_at_19_27_25.png', '.png', '238', '103', 11, '2017-12-30 19:27:48', 'http://localhost:8888/coddl/assets/uploads/Screen_Shot_2017-12-30_at_19_27_25.png', 'http://localhost:8888/coddl/assets/uploads/Screen_Shot_2017-12-30_at_19_27_25_thumb.png', 'logo'),
+(199, 211, 'abstract-bg.jpg', '.jpg', '1200', '910', 208, '2017-12-30 19:38:59', 'http://localhost:8888/coddl/assets/uploads/abstract-bg.jpg', 'http://localhost:8888/coddl/assets/uploads/abstract-bg_thumb.jpg', 'landing'),
+(200, 211, 'slice1.jpg', '.jpg', '3485', '2476', 3826, '2017-12-30 20:03:03', 'http://localhost:8888/coddl/assets/uploads/slice1.jpg', 'http://localhost:8888/coddl/assets/uploads/slice1_thumb.jpg', 'imone'),
+(201, 211, 'slice11.jpg', '.jpg', '3485', '2440', 1917, '2017-12-30 20:04:06', 'http://localhost:8888/coddl/assets/uploads/slice11.jpg', 'http://localhost:8888/coddl/assets/uploads/slice11_thumb.jpg', 'imone'),
+(202, 204, 'slice2.jpg', '.jpg', '3452', '586', 319, '2017-12-30 20:43:55', 'http://localhost:8888/coddl/assets/uploads/slice2.jpg', 'http://localhost:8888/coddl/assets/uploads/slice2_thumb.jpg', 'footerlogo'),
+(203, 204, 'slice12.jpg', '.jpg', '1171', '49', 6, '2017-12-30 20:48:46', 'http://localhost:8888/coddl/assets/uploads/slice12.jpg', 'http://localhost:8888/coddl/assets/uploads/slice12_thumb.jpg', 'footerlogo');
 
 -- --------------------------------------------------------
 
@@ -96,22 +108,28 @@ CREATE TABLE `IGS_content` (
   `boxcolor` varchar(100) DEFAULT NULL,
   `icon` text,
   `logowidth` varchar(10) DEFAULT NULL,
-  `welcome` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=latin1;
+  `welcome` varchar(200) DEFAULT NULL,
+  `landing` varchar(500) DEFAULT NULL,
+  `fontcolor` varchar(100) DEFAULT NULL,
+  `imone` varchar(500) DEFAULT NULL,
+  `footerlogo` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_content`
 --
 
-INSERT INTO `IGS_content` (`id`, `entryid`, `entrytitle`, `test`, `color`, `bgcolor`, `logo`, `name`, `url`, `boxcolor`, `icon`, `logowidth`, `welcome`) VALUES
-(204, 203, '', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(205, 204, '', NULL, 'DE3A3A', 'F2F2F2', NULL, NULL, NULL, 'BDBBBB', NULL, '100', 'Welcome to this CMS'),
-(206, 205, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(207, 206, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(208, 207, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(209, 208, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(210, 209, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(211, 210, 'Testing', NULL, NULL, NULL, NULL, 'testing', 'test', NULL, 'fa-save', NULL, NULL);
+INSERT INTO `IGS_content` (`id`, `entryid`, `entrytitle`, `test`, `color`, `bgcolor`, `logo`, `name`, `url`, `boxcolor`, `icon`, `logowidth`, `welcome`, `landing`, `fontcolor`, `imone`, `footerlogo`) VALUES
+(204, 203, '', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(205, 204, '', NULL, 'D25C4A', 'EBEBEB', '198', NULL, NULL, 'BDBDBD', NULL, '238', 'Welcome to this CMS', NULL, '696969', NULL, '203'),
+(206, 205, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(207, 206, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(208, 207, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(209, 208, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(210, 209, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(211, 210, 'Testing', NULL, NULL, NULL, NULL, 'testing', 'test', NULL, 'fa-save', NULL, NULL, NULL, NULL, NULL, NULL),
+(212, 211, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '199', NULL, '201', NULL),
+(213, 212, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '201', NULL);
 
 -- --------------------------------------------------------
 
@@ -146,7 +164,7 @@ CREATE TABLE `IGS_entry` (
   `sectionid` int(11) NOT NULL,
   `type` varchar(200) NOT NULL,
   `datecreated` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_entry`
@@ -160,7 +178,9 @@ INSERT INTO `IGS_entry` (`id`, `sectionid`, `type`, `datecreated`) VALUES
 (207, 215, 'Single', '0000-00-00'),
 (208, 216, 'Single', '0000-00-00'),
 (209, 217, 'Single', '0000-00-00'),
-(210, 218, 'Multiple', '0000-00-00');
+(210, 218, 'Multiple', '0000-00-00'),
+(211, 219, 'Single', '0000-00-00'),
+(212, 220, 'Single', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -178,7 +198,7 @@ CREATE TABLE `IGS_fields` (
   `formvalidation` text NOT NULL,
   `settings` text NOT NULL,
 `id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=296 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=300 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_fields`
@@ -194,7 +214,11 @@ INSERT INTO `IGS_fields` (`name`, `type`, `opts`, `instructions`, `maxchars`, `l
 ('boxcolor', 'color', '', 'The border colour for the main pages', '', 0, 'min_length[1]', '', 292),
 ('icon', 'drop-down', 'fa-unlock,fa-group,fa-user,fa-off,fa-cog,fa-calendar,fa-credit-card,fa-dashboard,fa-cloud,fa-save', 'Icon for the dashboard', '', 0, 'min_length[1]', '', 293),
 ('logowidth', 'plain-text', '', 'The logo width in pixels', '10', 0, 'max_length[10]', '', 294),
-('welcome', 'plain-text', '', 'The welcome message', '200', 0, 'max_length[200]', '', 295);
+('welcome', 'plain-text', '', 'The welcome message', '200', 0, 'max_length[200]', '', 295),
+('landing', 'file-upload', '', 'landing image', '', 1, 'jpg', '', 296),
+('fontcolor', 'color', '', 'landing page font color', '', 0, 'min_length[1]', '', 297),
+('imone', 'file-upload', '', '', '', 1, 'jpg', '', 298),
+('footerlogo', 'file-upload', '', '', '', 1, 'jpg', '', 299);
 
 -- --------------------------------------------------------
 
@@ -213,7 +237,7 @@ CREATE TABLE `IGS_menu` (
 --
 
 INSERT INTO `IGS_menu` (`id`, `html`, `array`) VALUES
-(1, '\n<li class="dd-item dd3-item" id="idYFO1MQ6xr52boImw">\n				<div class="dd-handle dd3-handle"></div>\n				<div class="dd3-content">home</div>\n				<div class="url" style="display:none;">211</div>\n				<div class="dd-edit"><i id="remove" u_id="idYFO1MQ6xr52boImw" class="fa fa-trash-o"></i></div>\n				</li>\n', '');
+(1, '\n<li class="dd-item dd3-item" id="idkOCeHgoIDtL2SxwB">\n				<div class="dd-handle dd3-handle"></div>\n				<div class="dd3-content">welcome</div>\n				<div class="url" style="display:none;">219</div>\n				<div class="dd-edit"><i id="remove" u_id="idkOCeHgoIDtL2SxwB" class="fa fa-trash-o"></i></div>\n				</li>\n<li class="dd-item dd3-item" id="idSxDH7OPNslmp6u1J">\n				<div class="dd-handle dd3-handle"></div>\n				<div class="dd3-content">About</div>\n				<div class="url" style="display:none;">220</div>\n				<div class="dd-edit"><i id="remove" u_id="idSxDH7OPNslmp6u1J" class="fa fa-trash-o"></i></div>\n				</li><li class="dd-item dd3-item" id="idhDwYaAJQO6ZkpnGT">\n				<div class="dd-handle dd3-handle"></div>\n				<div class="dd3-content">Log-in</div>\n				<div class="url" style="display:none;">214</div>\n				<div class="dd-edit"><i id="remove" u_id="idhDwYaAJQO6ZkpnGT" class="fa fa-trash-o"></i></div>\n				</li>\n<li class="dd-item dd3-item" id="idpAH6K5bWMSBUc1xm">\n				<div class="dd-handle dd3-handle"></div>\n				<div class="dd3-content">Try-us-for-free</div>\n				<div class="url" style="display:none;">217</div>\n				<div class="dd-edit"><i id="remove" u_id="idpAH6K5bWMSBUc1xm" class="fa fa-trash-o"></i></div>\n				</li>\n', '');
 
 -- --------------------------------------------------------
 
@@ -227,14 +251,17 @@ CREATE TABLE `IGS_menu2` (
   `tag` varchar(50) NOT NULL,
   `innerhtml` varchar(500) NOT NULL,
 `s_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_menu2`
 --
 
 INSERT INTO `IGS_menu2` (`id`, `father`, `tag`, `innerhtml`, `s_id`) VALUES
-(0, 'null', 'tag', ' home| 211| ', 12);
+(3, 'null', 'tag', ' Try-us-for-free| 217| ', 19),
+(2, 'null', 'tag', ' Log-in| 214| ', 20),
+(1, 'null', 'tag', ' About| 220| ', 21),
+(0, 'null', 'tag', ' welcome| 219| ', 22);
 
 -- --------------------------------------------------------
 
@@ -336,7 +363,7 @@ CREATE TABLE `IGS_routes` (
 `id` int(11) NOT NULL,
   `route` varchar(200) NOT NULL,
   `controller` varchar(200) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_routes`
@@ -350,7 +377,9 @@ INSERT INTO `IGS_routes` (`id`, `route`, `controller`) VALUES
 (5, 'success', 'admin/test_twig/display/208/216'),
 (6, 'Try-us-for-free', 'admin/test_twig/display/209/217'),
 (7, 'menuitems', 'admin/test_twig/index_page/menuitems'),
-(8, 'menuitems/testing', 'admin/test_twig/display/210/218');
+(8, 'menuitems/testing', 'admin/test_twig/display/210/218'),
+(9, 'welcome', 'admin/test_twig/display/211/219'),
+(10, 'About', 'admin/test_twig/display/212/220');
 
 -- --------------------------------------------------------
 
@@ -362,7 +391,7 @@ CREATE TABLE `IGS_section` (
 `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `sectiontype` varchar(200) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=219 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=221 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_section`
@@ -376,7 +405,9 @@ INSERT INTO `IGS_section` (`id`, `name`, `sectiontype`) VALUES
 (215, 'reset', 'Single'),
 (216, 'success', 'Single'),
 (217, 'Try-us-for-free', 'Single'),
-(218, 'menuitems', 'Multiple');
+(218, 'menuitems', 'Multiple'),
+(219, 'welcome', 'Single'),
+(220, 'About', 'Single');
 
 -- --------------------------------------------------------
 
@@ -390,7 +421,7 @@ CREATE TABLE `IGS_section_layout` (
   `fieldid` int(11) NOT NULL,
   `sortorder` int(11) NOT NULL,
   `required` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=898 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=921 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_section_layout`
@@ -406,12 +437,18 @@ INSERT INTO `IGS_section_layout` (`s_id`, `sectionid`, `fieldid`, `sortorder`, `
 (884, 218, 290, 0, 0),
 (885, 218, 291, 1, 0),
 (886, 218, 293, 2, 0),
-(892, 212, 287, 0, 0),
-(893, 212, 288, 1, 0),
-(894, 212, 289, 2, 0),
-(895, 212, 294, 3, 0),
-(896, 212, 292, 4, 0),
-(897, 212, 295, 5, 0);
+(908, 219, 296, 0, 0),
+(909, 219, 298, 1, 0),
+(911, 220, 286, 0, 0),
+(912, 220, 298, 1, 0),
+(913, 212, 287, 0, 0),
+(914, 212, 288, 1, 0),
+(915, 212, 289, 2, 0),
+(916, 212, 294, 3, 0),
+(917, 212, 297, 4, 0),
+(918, 212, 292, 5, 0),
+(919, 212, 295, 6, 0),
+(920, 212, 299, 7, 0);
 
 -- --------------------------------------------------------
 
@@ -472,7 +509,7 @@ CREATE TABLE `IGS_user` (
 --
 
 INSERT INTO `IGS_user` (`id`, `name`, `password`, `joindate`, `logins`, `is_logged_in`, `isadmin`, `companyid`, `company`, `email`, `number`, `activ_status`, `activ_key`, `logo`, `about`, `credits`, `permissiongroup`, `fullname`) VALUES
-(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 9, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, '');
+(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 18, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, '');
 
 --
 -- Indexes for dumped tables
@@ -594,7 +631,7 @@ ALTER TABLE `IGS_user`
 -- AUTO_INCREMENT for table `IGS_assetfields`
 --
 ALTER TABLE `IGS_assetfields`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=198;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=204;
 --
 -- AUTO_INCREMENT for table `IGS_blocks`
 --
@@ -614,7 +651,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `IGS_content`
 --
 ALTER TABLE `IGS_content`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=212;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=214;
 --
 -- AUTO_INCREMENT for table `IGS_email`
 --
@@ -624,17 +661,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `IGS_entry`
 --
 ALTER TABLE `IGS_entry`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=211;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=213;
 --
 -- AUTO_INCREMENT for table `IGS_fields`
 --
 ALTER TABLE `IGS_fields`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=296;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=300;
 --
 -- AUTO_INCREMENT for table `IGS_menu2`
 --
 ALTER TABLE `IGS_menu2`
-MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `IGS_permissions`
 --
@@ -654,17 +691,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `IGS_routes`
 --
 ALTER TABLE `IGS_routes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `IGS_section`
 --
 ALTER TABLE `IGS_section`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=219;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=221;
 --
 -- AUTO_INCREMENT for table `IGS_section_layout`
 --
 ALTER TABLE `IGS_section_layout`
-MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=898;
+MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=921;
 --
 -- AUTO_INCREMENT for table `IGS_user`
 --

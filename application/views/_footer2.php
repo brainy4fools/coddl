@@ -1,9 +1,33 @@
                   <div class="pm-footer" >
                     <div class="book bord-b">
                     <div class="pm-bb" >
-                        <div class="row" style="margin-left:auto; margin-right:auto; max-width:1170px; padding-top:50px;  ">
-                            <div class="col-sm-4" style="margin-top:10px; padding-bottom:20px;">
+
+                        <div class="row " style="margin-left:30px; margin-right:30px; padding-top:50px;">
+                          <img class="img-responsive" src="<?= $theme['footerlogo'];?>" alt="image" />
+                        </div>
+                        <div class="row m-t" style="margin-left:30px; margin-right:30px;">
+                        
+                        
+                            <div class="col-sm-4" style="padding-bottom:50px;">
+                                © coddl, LLC 2017 <br/>
+                                <div class="coddl-about">coddl is a division of Alpha Group <br/> T: 0116 123456</div>
+                                
+                                 
+                            </div>
+                            <div class="col-sm-4" style="padding-bottom:50px;">
                                
+                                 
+                            </div>
+                            <div class="col-sm-2">
+                              
+                              <a href="">FAQs</a> <br/>
+                              <a href="">Help</a> <br/>
+                              <a href="">Contact</a> <br/>
+                            </div>
+                            <div class="col-sm-2">
+                              <a href="">FAQs</a> <br/>
+                              <a href="">Help</a> <br/>
+                              <a href="">Contact</a> <br/>
                             </div>
                            
                         </div>

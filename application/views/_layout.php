@@ -733,7 +733,7 @@ h1,h2,h3,h4,h5{
           <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
             <i class="fa fa-bars"></i>
           </a>
-          <a href="#" class="nav-brand" data-toggle="fullscreen">CMS</a>
+          <a href="#" class="nav-brand" data-toggle="fullscreen">coddl</a>
           
         </header>
         <section>
@@ -838,11 +838,11 @@ h1,h2,h3,h4,h5{
     <section id="content">
       <section class="vbox">
         <header class="header b-b bg-white">
-          <div class="input-group input-s pull-right m-t-sm">
+          <div class="input-group input-s pull-right m-t-sm" style="margin-top:40px;">
             <span class="input-group-addon input-sm"><i class="fa fa-search"></i></span>
             <input type="text" class="form-control input-sm" id="search-note" placeholder="search">
           </div>
-          <p><strong><?php echo $theme['welcome']; ?></strong></p>
+           <img class="img-responsive" src="<?= $theme['logo']; ?>" alt="image" />
         </header>
         <section class="scrollable wrapper">          
           
