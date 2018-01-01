@@ -83,6 +83,12 @@
                 $(this).css('z-index', 8);
                 $('.tooltiptopicevent').remove();
             },
+             //test to delete
+             eventClick: function(calEvent, jsEvent, view) {
+                $("#calendar").fullCalendar('removeEvents', calEvent.id);
+
+
+            },
 
             dayClick: function(date, jsEvent, view) {
 
