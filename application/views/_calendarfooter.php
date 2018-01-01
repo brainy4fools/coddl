@@ -1,3 +1,31 @@
+<div class="modal fade" id="modal-form">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <div class="igs-small">Information text</div>
+                            <input name="name" type="text" class="form-control f" placeholder="Type here" data-toggle="tooltip" data-placement="top" value=""> </div>
+                        <div class="form-group">
+                            <label>label</label>
+                            <textarea name="name" class="form-control f" rows="5" placeholder="Type here" data-toggle="tooltip" data-placement="top"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-purplet btn-s-xs pull-right f"> <strong>ok</strong>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
   </section>
       </section>
       <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
@@ -37,7 +65,7 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'agendaWeek,agendaDay'
+                right: 'month,agendaWeek,agendaDay'
             },
             eventMouseover: function(data, event, view) {
                 tooltip = '<div class="tooltiptopicevent">' + 'Title: ' + data.title + '</br>' + 'ID: ' + data.id + '</div>';
@@ -55,6 +83,41 @@
                 $(this).css('z-index', 8);
                 $('.tooltiptopicevent').remove();
             },
+
+            dayClick: function(date, jsEvent, view) {
+
+                //alert('Clicked on: ' + date.format());
+                //alert('Current view: ' + view.name);
+                var date = date.format();
+
+                $.ajax({
+                        url: "<?php echo site_url('custom/calendar/add_event'); ?>",
+                        type: 'post',
+                        data: {date:date},
+                        dataType: 'json',
+                        success: function (data) {
+                        
+
+                        var eventData;
+                        eventData = {
+                            id: data.id,
+                            title: data.title,
+                            start: date,
+                            end: data.end,
+                            className: data.class
+                            
+                        };
+                        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+                        $('#calendar').fullCalendar('unselect');
+
+
+                        }
+                    });
+                
+
+            },
+
+
             contentHeight: 800,
             columnFormat: 'ddd D MMM',
             allDaySlot: false,
@@ -68,22 +131,6 @@
             navLinks: true, // can click day/week names to navigate views
             selectable: true,
             selectHelper: true,
-            select: function(start, end) {
-                var title = prompt('Event Title:');
-                var eventData;
-                if (title) {
-                    eventData = {
-                        id: '7b',
-                        title: title,
-                        start: start,
-                        end: end,
-                        className: 'blue'
-                        
-                    };
-                    $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-                }
-                $('#calendar').fullCalendar('unselect');
-            },
             editable: true,
             eventLimit: true, // allow "more" link when too many events
             events: [{
