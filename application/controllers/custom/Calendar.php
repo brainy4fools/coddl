@@ -12,7 +12,16 @@ class Calendar extends CI_Controller {
 	public function add_event()
 	{
 
-	  $date = $this->input->post('date');
+	  $this->load->helper('array');
+
+	  $things = array("green", "blue", "purple","red", "orange");
+	   $class = random_element($things);
+
+
+	  $date = trim($this->input->post('date'));
+	  $title = $this->input->post('title');
+
+
 	  //2018-01-03T08:45:00
 	  $arr = explode("T", $date);
 	  $tmp = $arr[1];
@@ -26,7 +35,7 @@ class Calendar extends CI_Controller {
 	   $id = random_string('alnum', 8);
 
        $result = array();
-       $result = array('title' => 'Haircut with Laura','class'=>'blue','id'=>$id,'end'=>$endTime);
+       $result = array('title' => $title,'class'=>$class,'id'=>$id,'end'=>$endTime);
 
 		echo json_encode($result);
 

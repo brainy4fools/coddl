@@ -107,6 +107,26 @@
         border-left: 4px solid #2196f3;
     }
 
+    .red{
+        background-color: #FCADAD;
+        border-left: 4px solid #F20D0D;
+    }
+
+    .green{
+        background-color: #C9FFC6;
+        border-left: 4px solid #33B045;
+    }
+
+    .orange{
+        background-color: #F9D98C;
+        border-left: 4px solid #F2AF0D;
+    }
+
+    .purple{
+        background-color: #DEA7E2;
+        border-left: 4px solid #8D3193;
+    }
+
 /*end full calendar styling*/
 
 

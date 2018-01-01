@@ -3,16 +3,21 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="row">
+
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <label>Name</label>
-                            <div class="igs-small">Information text</div>
-                            <input name="name" type="text" class="form-control f" placeholder="Type here" data-toggle="tooltip" data-placement="top" value=""> </div>
-                        <div class="form-group">
-                            <label>label</label>
-                            <textarea name="name" class="form-control f" rows="5" placeholder="Type here" data-toggle="tooltip" data-placement="top"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-purplet btn-s-xs pull-right f"> <strong>ok</strong>
+                            <div class="form-group">
+                                <label>Time</label>
+                                <div class="igs-small"></div>
+                                <input id="time" name="time" type="text"  class="form-control f" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="" readonly>
+                            </div>
+
+
+                            <label>Title</label>
+                            <div class="igs-small">Title of the appointment, and customer</div>
+                            <input id='title' name="title" type="text" class="form-control f" placeholder="Type here" data-toggle="tooltip" data-placement="top" value=""> </div>
+                        
+                        <button id='s-submit' type="submit" class="btn btn-purplet btn-s-xs pull-right f"> <strong>Save</strong>
                         </button>
                     </div>
                 </div>
@@ -61,6 +66,48 @@
        $('#i-rem').click(function() {
             $("#calendar").fullCalendar('removeEvents', '7b');
         });
+
+
+       //submit modal
+       $('#s-submit').click(function(){
+
+        date = $( "#time" ).val();
+        title = $('#title').val();
+
+        
+
+        $.ajax({
+                url: "<?php echo site_url('custom/calendar/add_event'); ?>",
+                type: 'post',
+                data: {date:date,title:title},
+                dataType: 'json',
+                success: function (data) {
+                
+                
+
+                var eventData;
+                eventData = {
+                    id: data.id,
+                    title: data.title,
+                    start: date,
+                    end: data.end,
+                    className: data.class
+                    
+                };
+                $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+                $('#calendar').fullCalendar('unselect');
+                $('#modal-form').modal('hide');
+                $('#title').val("");
+
+                }
+            });
+
+
+
+       });
+
+
+
         $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
@@ -91,34 +138,11 @@
             },
 
             dayClick: function(date, jsEvent, view) {
-
+                $('#time').val(date.format());
+                $('#modal-form').modal();
                 //alert('Clicked on: ' + date.format());
                 //alert('Current view: ' + view.name);
-                var date = date.format();
-
-                $.ajax({
-                        url: "<?php echo site_url('custom/calendar/add_event'); ?>",
-                        type: 'post',
-                        data: {date:date},
-                        dataType: 'json',
-                        success: function (data) {
-                        
-
-                        var eventData;
-                        eventData = {
-                            id: data.id,
-                            title: data.title,
-                            start: date,
-                            end: data.end,
-                            className: data.class
-                            
-                        };
-                        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-                        $('#calendar').fullCalendar('unselect');
-
-
-                        }
-                    });
+                
                 
 
             },
