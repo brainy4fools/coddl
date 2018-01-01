@@ -138,8 +138,14 @@
             },
 
             dayClick: function(date, jsEvent, view) {
-                $('#time').val(date.format());
-                $('#modal-form').modal();
+                
+                if(view.name != 'month')
+                {
+                    $('#time').val(date.format());
+                    $('#modal-form').modal();
+                }
+
+                
                 //alert('Clicked on: ' + date.format());
                 //alert('Current view: ' + view.name);
                 
