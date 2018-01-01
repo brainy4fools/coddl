@@ -8,14 +8,35 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label>Time</label>
-                                <div class="igs-small"></div>
+                                <div class="igs-small">You can set the duration after by clicking and dragging the square</div>
                                 <input id="time" name="time" type="text"  class="form-control f" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="" readonly>
                             </div>
 
 
+                            
+
+
                             <label>Title</label>
-                            <div class="igs-small">Title of the appointment, and customer</div>
+                            <div class="igs-small">Title of the appointment, and customer.</div>
                             <input id='title' name="title" type="text" class="form-control f" placeholder="Type here" data-toggle="tooltip" data-placement="top" value=""> </div>
+
+                            
+
+
+
+
+                             <div class="form-group">
+                            <label>Color</label>
+                            <select id='class' name="class" class="form-control f">
+                               <option value="blue">Blue</option>
+                                                          
+                                <option value="green">Green</option>
+                                <option value="orange">Orange</option>
+                                <option value="red">Red</option>
+                                <option value="purple"> Purple</option>
+                                
+                            </select>
+                        </div>
                         
                         <button id='s-submit' type="submit" class="btn btn-purplet btn-s-xs pull-right f"> <strong>Save</strong>
                         </button>
@@ -73,16 +94,18 @@
 
         date = $( "#time" ).val();
         title = $('#title').val();
-
+        classt = $('#class').val();
+       
         
 
         $.ajax({
                 url: "<?php echo site_url('custom/calendar/add_event'); ?>",
                 type: 'post',
-                data: {date:date,title:title},
+                data: {date:date,title:title,classt:classt},
                 dataType: 'json',
                 success: function (data) {
                 
+
                 
 
                 var eventData;

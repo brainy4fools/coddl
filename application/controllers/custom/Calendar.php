@@ -14,23 +14,17 @@ class Calendar extends CI_Controller {
 
 	  $this->load->helper('array');
 
-	  $things = array("green", "blue", "purple","red", "orange");
-	   $class = random_element($things);
+	  
+	   $class = $this->input->post('classt');
+	   $inc = "30 minutes";
 
 
 	  $date = trim($this->input->post('date'));
 	  $title = $this->input->post('title');
 
 
-	  //2018-01-03T08:45:00
-	  $arr = explode("T", $date);
-	  $tmp = $arr[1];
-
-	  $endTime = strtotime("+30 minutes", strtotime($tmp));
-	  $endTime = date('h:i:s',$endTime);
-
-	  //preappend date
-	  $endTime = $arr[0]."T".$endTime;
+	  $endTime = $this->add_time($date,$inc);
+	  
 
 	   $id = random_string('alnum', 8);
 
@@ -38,6 +32,22 @@ class Calendar extends CI_Controller {
        $result = array('title' => $title,'class'=>$class,'id'=>$id,'end'=>$endTime);
 
 		echo json_encode($result);
+
+	}
+
+
+	public function add_time($tim,$inc)
+	{
+		//2018-01-03T08:45:00
+	  $arr = explode("T", $tim);
+	  $tmp = $arr[1];
+
+	  $endTime = strtotime("+$inc", strtotime($tmp));
+	  $endTime = date('H:i:s',$endTime);
+
+	  //preappend date
+	  return $endTime = $arr[0]."T".$endTime;
+
 
 	}
 
