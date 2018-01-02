@@ -20,7 +20,19 @@ class Calendar extends CI_Controller {
 
 
 	  $date = trim($this->input->post('date'));
-	  $title = $this->input->post('title');
+
+
+      //passed in as ids so user model to get the names
+
+      $this->load->model('clients/clients_model');
+      $client = $this->clients_model->get_client_name($this->input->post('client'));
+
+      $this->load->model('services/services_model');
+      $service = $this->services_model->get_service_name($this->input->post('service'));
+      
+
+
+	  $title = $service ." ". $client;
 
 
 	  $endTime = $this->add_time($date,$inc);

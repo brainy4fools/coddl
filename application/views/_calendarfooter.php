@@ -13,15 +13,31 @@
                             </div>
 
 
-                            
-
-
-                            <label>Title</label>
-                            <div class="igs-small">Title of the appointment, and customer.</div>
-                            <input id='title' name="title" type="text" class="form-control f" placeholder="Type here" data-toggle="tooltip" data-placement="top" value=""> </div>
+                            <?php $qc = my_clients(); ?>
 
                             
+                            <div class="form-group">
+                                <label>Select Client</label>
+                                <select id='client' name="client" class="form-control f">
+                                   <?php foreach ($qc->result() as $key): ?>
+                                   <option value="<?php echo $key->id; ?>"><?php echo $key->First_Name; ?> <?php echo $key->Last_Name; ?></option>
+                                   
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
 
+                            <?php $qs = my_services(); ?>
+
+                            
+                            <div class="form-group">
+                                <label>Select Service</label>
+                                <select id='service' name="service" class="form-control f">
+                                   <?php foreach ($qs->result() as $key): ?>
+                                   <option value="<?php echo $key->id; ?>"><?php echo $key->Service_name; ?> </option>
+                                   
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
 
 
 
@@ -93,15 +109,17 @@
        $('#s-submit').click(function(){
 
         date = $( "#time" ).val();
-        title = $('#title').val();
+        
         classt = $('#class').val();
+        client = $('#client').val();
+        service = $('#service').val();
        
         
 
         $.ajax({
                 url: "<?php echo site_url('custom/calendar/add_event'); ?>",
                 type: 'post',
-                data: {date:date,title:title,classt:classt},
+                data: {date:date,classt:classt,client:client,service:service},
                 dataType: 'json',
                 success: function (data) {
                 
