@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jan 02, 2018 at 04:26 PM
+-- Generation Time: Jan 02, 2018 at 10:03 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.5.18
 
@@ -89,14 +89,7 @@ CREATE TABLE `IGS_bookings` (
   `LOCATION_PHONE` varchar(512) NOT NULL,
   `BOOKING_END_DATE_TIME` varchar(512) NOT NULL,
   `color` varchar(512) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `IGS_bookings`
---
-
-INSERT INTO `IGS_bookings` (`id`, `user_id`, `CLIENT_FIRST_NAME`, `CLIENT_LAST_NAME`, `STAFF_FIRST_NAME`, `STAFF_LAST_NAME`, `BOOKING_DATE_TIME`, `BOOKING_DATE`, `BOOKING_TIME`, `BOOKING_REFERENCE`, `SERVICE_NAME`, `BUSINESS_NAME`, `LOCATION_NAME`, `LOCATION_PHONE`, `BOOKING_END_DATE_TIME`, `color`) VALUES
-(8, 4, 'Sara Smith', 'Sara Smith', 'karen', 'h', '2018-01-04T12:15:00', 'x', 'x', '7ojATYJE', 'Indian Head Massage', 'x', 'x', 'x', '2018-01-04T12:45:00', 'purple');
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -136,14 +129,7 @@ CREATE TABLE `IGS_clients` (
   `Email` varchar(512) NOT NULL,
   `Send_Notifications_by` varchar(255) NOT NULL,
   `Client_Notes` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `IGS_clients`
---
-
-INSERT INTO `IGS_clients` (`id`, `user_id`, `First_Name`, `Last_Name`, `Mobile_Number`, `Email`, `Send_Notifications_by`, `Client_Notes`) VALUES
-(3, 4, 'Sara', 'Smith', '07458478447', '', '', '');
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -160,14 +146,7 @@ CREATE TABLE `IGS_company_details` (
   `Website` varchar(512) NOT NULL,
   `Mobile_Number` varchar(255) NOT NULL,
   `Business_Type` varchar(512) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `IGS_company_details`
---
-
-INSERT INTO `IGS_company_details` (`id`, `user_id`, `Bussiness_Name`, `Description`, `Address`, `Website`, `Mobile_Number`, `Business_Type`) VALUES
-(1, 4, 'Blue Lotus', 'A business providing Indian Head massages, and meditation therapy', '', '', '012345678', 'Salon');
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -213,7 +192,7 @@ INSERT INTO `IGS_content` (`id`, `entryid`, `entrytitle`, `test`, `color`, `bgco
 (214, 213, 'Clients', NULL, NULL, NULL, NULL, 'Clients', NULL, 'fa-group', NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/clients'),
 (215, 214, 'Staff', NULL, NULL, NULL, NULL, 'Staff', NULL, 'fa-user', NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/staff'),
 (216, 215, 'Services', NULL, NULL, NULL, NULL, 'Services', NULL, 'fa-credit-card', NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/services'),
-(217, 216, 'Setup', NULL, NULL, NULL, NULL, 'Setup', NULL, 'fa-cog', NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/setup'),
+(217, 216, 'Setup', NULL, NULL, NULL, NULL, 'Setup', NULL, 'fa-cog', NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/setup/edit_setup_view/1'),
 (218, 217, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (219, 218, 'Company Profile', NULL, NULL, NULL, NULL, 'Company Profile', NULL, 'fa-unlock', NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/company_details/edit_company_details_view/1');
 
@@ -399,14 +378,15 @@ INSERT INTO `IGS_permissions` (`permissionID`, `permission`, `order_position`) V
 CREATE TABLE `IGS_permission_groups` (
 `groupID` int(11) NOT NULL,
   `groupName` varchar(200) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_permission_groups`
 --
 
 INSERT INTO `IGS_permission_groups` (`groupID`, `groupName`) VALUES
-(1, 'Administrators');
+(1, 'Administrators'),
+(42, 'coddl');
 
 -- --------------------------------------------------------
 
@@ -441,7 +421,13 @@ INSERT INTO `IGS_permission_map` (`groupID`, `permissionID`) VALUES
 (1, 72),
 (1, 73),
 (1, 74),
-(1, 75);
+(1, 75),
+(42, 70),
+(42, 71),
+(42, 72),
+(42, 73),
+(42, 74),
+(42, 75);
 
 -- --------------------------------------------------------
 
@@ -585,15 +571,7 @@ CREATE TABLE `IGS_services` (
   `Service_name` varchar(512) NOT NULL,
   `Duration` varchar(215) NOT NULL,
   `Retail_Price` varchar(215) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `IGS_services`
---
-
-INSERT INTO `IGS_services` (`id`, `user_id`, `Service_name`, `Duration`, `Retail_Price`) VALUES
-(1, 4, 'Blow dry', '45 minutes', '25.00'),
-(2, 4, 'Indian Head Massage', '60 minutes', '50.00');
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -608,14 +586,7 @@ CREATE TABLE `IGS_setup` (
   `Send_by` varchar(512) NOT NULL,
   `Reminder_advance_notice` varchar(512) NOT NULL,
   `SMS_Template` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `IGS_setup`
---
-
-INSERT INTO `IGS_setup` (`id`, `user_id`, `Enable_Notifications`, `Send_by`, `Reminder_advance_notice`, `SMS_Template`) VALUES
-(1, 4, 1, 'SMS and Email', '1 hour', 'Hi CLIENT_FIRST_NAME, this is a friendly reminder about your appointment with BUSINESS_NAME on BOOKING_DATE_TIME, to cancel text LOCATION_PHONE');
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -686,14 +657,15 @@ CREATE TABLE `IGS_user` (
   `credits` int(11) NOT NULL,
   `permissiongroup` int(11) NOT NULL,
   `fullname` varchar(200) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_user`
 --
 
 INSERT INTO `IGS_user` (`id`, `name`, `password`, `joindate`, `logins`, `is_logged_in`, `isadmin`, `companyid`, `company`, `email`, `number`, `activ_status`, `activ_key`, `logo`, `about`, `credits`, `permissiongroup`, `fullname`) VALUES
-(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 48, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, '');
+(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 49, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, ''),
+(5, 'sara', '$2y$10$NJ5AA9NEV9kTvAmPbCLq/.Kb5Fk6nsWN6Td1CKJ5.E7pAO5CKBO3K', '2018-01-02', 0, 0, 0, 0, '', 'sara@mail.com', '', 0, '', '', '', 0, 42, '');
 
 --
 -- Indexes for dumped tables
@@ -861,7 +833,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `IGS_bookings`
 --
 ALTER TABLE `IGS_bookings`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `IGS_cats`
 --
@@ -876,12 +848,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `IGS_clients`
 --
 ALTER TABLE `IGS_clients`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `IGS_company_details`
 --
 ALTER TABLE `IGS_company_details`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `IGS_content`
 --
@@ -916,7 +888,7 @@ MODIFY `permissionID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=76;
 -- AUTO_INCREMENT for table `IGS_permission_groups`
 --
 ALTER TABLE `IGS_permission_groups`
-MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `IGS_plugins`
 --
@@ -941,12 +913,12 @@ MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=922;
 -- AUTO_INCREMENT for table `IGS_services`
 --
 ALTER TABLE `IGS_services`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `IGS_setup`
 --
 ALTER TABLE `IGS_setup`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `IGS_staff`
 --
@@ -956,7 +928,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `IGS_user`
 --
 ALTER TABLE `IGS_user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
