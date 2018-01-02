@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jan 01, 2018 at 05:59 PM
+-- Generation Time: Jan 02, 2018 at 12:08 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.5.18
 
@@ -109,6 +109,30 @@ CREATE TABLE `IGS_clients` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `IGS_company_details`
+--
+
+CREATE TABLE `IGS_company_details` (
+`id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `Bussiness_Name` varchar(512) NOT NULL,
+  `Description` text NOT NULL,
+  `Address` text NOT NULL,
+  `Website` varchar(512) NOT NULL,
+  `Mobile_Number` varchar(255) NOT NULL,
+  `Business_Type` varchar(512) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `IGS_company_details`
+--
+
+INSERT INTO `IGS_company_details` (`id`, `user_id`, `Bussiness_Name`, `Description`, `Address`, `Website`, `Mobile_Number`, `Business_Type`) VALUES
+(1, 4, 'Blue Lotus', 'A business providing Indian Head massages, and meditation therapy', '', '', '0745874587', 'fdsa');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `IGS_content`
 --
 
@@ -130,7 +154,7 @@ CREATE TABLE `IGS_content` (
   `imone` varchar(500) DEFAULT NULL,
   `footerlogo` varchar(500) DEFAULT NULL,
   `url` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=219 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=220 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_content`
@@ -151,7 +175,8 @@ INSERT INTO `IGS_content` (`id`, `entryid`, `entrytitle`, `test`, `color`, `bgco
 (215, 214, 'Staff', NULL, NULL, NULL, NULL, 'Staff', NULL, 'fa-user', NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/staff'),
 (216, 215, 'Services', NULL, NULL, NULL, NULL, 'Services', NULL, 'fa-credit-card', NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/services'),
 (217, 216, 'Setup', NULL, NULL, NULL, NULL, 'Setup', NULL, 'fa-cog', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(218, 217, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(218, 217, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(219, 218, 'Company Profile', NULL, NULL, NULL, NULL, 'Company Profile', NULL, 'fa-unlock', NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/company_details/edit_company_details_view/1');
 
 -- --------------------------------------------------------
 
@@ -186,7 +211,7 @@ CREATE TABLE `IGS_entry` (
   `sectionid` int(11) NOT NULL,
   `type` varchar(200) NOT NULL,
   `datecreated` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=218 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=219 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_entry`
@@ -207,7 +232,8 @@ INSERT INTO `IGS_entry` (`id`, `sectionid`, `type`, `datecreated`) VALUES
 (214, 218, 'Multiple', '0000-00-00'),
 (215, 218, 'Multiple', '0000-00-00'),
 (216, 218, 'Multiple', '0000-00-00'),
-(217, 221, 'Single', '0000-00-00');
+(217, 221, 'Single', '0000-00-00'),
+(218, 218, 'Multiple', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -300,7 +326,7 @@ CREATE TABLE `IGS_permissions` (
 `permissionID` int(11) NOT NULL,
   `permission` varchar(200) DEFAULT NULL,
   `order_position` int(11) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_permissions`
@@ -321,7 +347,8 @@ INSERT INTO `IGS_permissions` (`permissionID`, `permission`, `order_position`) V
 (19, 'plugins', 19),
 (70, 'staff', 0),
 (71, 'clients', 0),
-(72, 'services', 0);
+(72, 'services', 0),
+(73, 'company_details', 0);
 
 -- --------------------------------------------------------
 
@@ -371,7 +398,8 @@ INSERT INTO `IGS_permission_map` (`groupID`, `permissionID`) VALUES
 (1, 19),
 (1, 70),
 (1, 71),
-(1, 72);
+(1, 72),
+(1, 73);
 
 -- --------------------------------------------------------
 
@@ -384,7 +412,7 @@ CREATE TABLE `IGS_plugins` (
   `name` varchar(255) NOT NULL,
   `install` datetime NOT NULL,
   `status` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_plugins`
@@ -393,7 +421,8 @@ CREATE TABLE `IGS_plugins` (
 INSERT INTO `IGS_plugins` (`id`, `name`, `install`, `status`) VALUES
 (2, 'staff', '2017-12-30 23:11:46', 1),
 (3, 'clients', '2017-12-30 23:30:55', 1),
-(4, 'services', '2017-12-30 23:38:00', 1);
+(4, 'services', '2017-12-30 23:38:00', 1),
+(5, 'company_details', '2018-01-02 10:40:45', 1);
 
 -- --------------------------------------------------------
 
@@ -405,7 +434,7 @@ CREATE TABLE `IGS_routes` (
 `id` int(11) NOT NULL,
   `route` varchar(200) NOT NULL,
   `controller` varchar(200) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_routes`
@@ -426,7 +455,8 @@ INSERT INTO `IGS_routes` (`id`, `route`, `controller`) VALUES
 (12, 'menuitems/staff', 'admin/test_twig/display/214/218'),
 (13, 'menuitems/services', 'admin/test_twig/display/215/218'),
 (14, 'menuitems/setup', 'admin/test_twig/display/216/218'),
-(15, 'calendar', 'admin/test_twig/display/217/221');
+(15, 'calendar', 'admin/test_twig/display/217/221'),
+(16, 'menuitems/company-profile', 'admin/test_twig/display/218/218');
 
 -- --------------------------------------------------------
 
@@ -597,7 +627,7 @@ CREATE TABLE `IGS_user` (
 --
 
 INSERT INTO `IGS_user` (`id`, `name`, `password`, `joindate`, `logins`, `is_logged_in`, `isadmin`, `companyid`, `company`, `email`, `number`, `activ_status`, `activ_key`, `logo`, `about`, `credits`, `permissiongroup`, `fullname`) VALUES
-(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 39, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, '');
+(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 41, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, '');
 
 --
 -- Indexes for dumped tables
@@ -631,6 +661,12 @@ ALTER TABLE `IGS_cat_links`
 -- Indexes for table `IGS_clients`
 --
 ALTER TABLE `IGS_clients`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `IGS_company_details`
+--
+ALTER TABLE `IGS_company_details`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -759,10 +795,15 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `IGS_clients`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `IGS_company_details`
+--
+ALTER TABLE `IGS_company_details`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `IGS_content`
 --
 ALTER TABLE `IGS_content`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=219;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=220;
 --
 -- AUTO_INCREMENT for table `IGS_email`
 --
@@ -772,7 +813,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `IGS_entry`
 --
 ALTER TABLE `IGS_entry`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=218;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=219;
 --
 -- AUTO_INCREMENT for table `IGS_fields`
 --
@@ -787,7 +828,7 @@ MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 -- AUTO_INCREMENT for table `IGS_permissions`
 --
 ALTER TABLE `IGS_permissions`
-MODIFY `permissionID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
+MODIFY `permissionID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=74;
 --
 -- AUTO_INCREMENT for table `IGS_permission_groups`
 --
@@ -797,12 +838,12 @@ MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
 -- AUTO_INCREMENT for table `IGS_plugins`
 --
 ALTER TABLE `IGS_plugins`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `IGS_routes`
 --
 ALTER TABLE `IGS_routes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `IGS_section`
 --
