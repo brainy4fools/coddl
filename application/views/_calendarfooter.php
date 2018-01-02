@@ -100,9 +100,7 @@
 
    
     $(document).ready(function(event) {
-       $('#i-rem').click(function() {
-            $("#calendar").fullCalendar('removeEvents', '7b');
-        });
+      
 
 
        //submit modal
@@ -173,6 +171,24 @@
             },
              //test to delete
              eventClick: function(calEvent, jsEvent, view) {
+                
+
+                var id = calEvent.id;
+                
+
+
+                $.ajax({
+                url: "<?php echo site_url('custom/calendar/cancel_event'); ?>",
+                type: 'post',
+                data: {id:id},
+                dataType: 'text',
+                success: function (data) {
+                
+
+            
+
+                    }
+                });
                 $("#calendar").fullCalendar('removeEvents', calEvent.id);
 
 
@@ -225,10 +241,47 @@
 
             ],
             eventDrop: function(event, delta, revertFunc) {
-                alert(event.title + " was dropped on " + event.start.format() + "\n" + event.end.format());
+                //alert(event.id + " was dropped on " + event.start.format() + "\n" + event.end.format());
+                var id = event.id;
+                var start = event.start.format();
+                var end = event.end.format();
+
+
+                $.ajax({
+                url: "<?php echo site_url('custom/calendar/move_event'); ?>",
+                type: 'post',
+                data: {id:id,start:start,end:end},
+                dataType: 'text',
+                success: function (data) {
+                
+
+            
+
+                }
+            });
+
+
+
             },
             eventResize: function(event, delta, revertFunc) {
-                alert(event.title + " end is now " + event.start.format() + "\n" + event.end.format());
+                //alert(event.title + " end is now " + event.start.format() + "\n" + event.end.format());
+                var id = event.id;
+                var start = event.start.format();
+                var end = event.end.format();
+
+
+                $.ajax({
+                url: "<?php echo site_url('custom/calendar/resize_event'); ?>",
+                type: 'post',
+                data: {id:id,start:start,end:end},
+                dataType: 'text',
+                success: function (data) {
+                
+
+            
+
+                }
+            });
                 
             }
         });

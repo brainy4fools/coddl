@@ -48,6 +48,27 @@ class Bookings_model extends CI_Model {
 
     }
 
+
+    public function move_bookings($BOOKING_REFERENCE,$BOOKING_DATE_TIME,$BOOKING_END_DATE_TIME)
+    {
+
+        $user_id = $this->session->userdata('userid');
+        $object = array(
+            'BOOKING_DATE_TIME'=>$BOOKING_DATE_TIME,'BOOKING_END_DATE_TIME'=>$BOOKING_END_DATE_TIME
+
+
+            );
+
+        $this->db->where('BOOKING_REFERENCE', $BOOKING_REFERENCE);
+        $this->db->where('user_id', $user_id);
+        $this->db->update('bookings', $object);
+
+
+    }
+
+
+
+
     public function get_bookings($id)
     {
         $user_id = $this->session->userdata('userid');
@@ -71,6 +92,16 @@ class Bookings_model extends CI_Model {
     	$this->db->where('id', $id);
         $this->db->where('user_id', $user_id);
     	$this->db->delete('bookings');
+
+    }
+
+    public function cancel_bookings($BOOKING_REFERENCE)
+    {
+        $user_id = $this->session->userdata('userid');
+
+        $this->db->where('BOOKING_REFERENCE', $BOOKING_REFERENCE);
+        $this->db->where('user_id', $user_id);
+        $this->db->delete('bookings');
 
     }
 

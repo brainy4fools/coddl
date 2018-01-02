@@ -31,6 +31,46 @@ class Calendar extends CI_Controller {
     }
 
 
+
+    //via ajax
+    public function move_event()
+    {
+
+        $BOOKING_REFERENCE = $this->input->post('id');
+        $BOOKING_DATE_TIME = $this->input->post('start');
+        $BOOKING_END_DATE_TIME = $this->input->post('end');
+
+        $this->load->model('bookings/bookings_model');
+            $this->bookings_model->move_bookings($BOOKING_REFERENCE,$BOOKING_DATE_TIME,$BOOKING_END_DATE_TIME);
+
+
+    }
+
+    //via ajax
+    public function resize_event()
+    {
+
+        $BOOKING_REFERENCE = $this->input->post('id');
+        $BOOKING_DATE_TIME = $this->input->post('start');
+        $BOOKING_END_DATE_TIME = $this->input->post('end');
+
+        $this->load->model('bookings/bookings_model');
+            $this->bookings_model->move_bookings($BOOKING_REFERENCE,$BOOKING_DATE_TIME,$BOOKING_END_DATE_TIME);
+
+
+    }
+
+    public function cancel_event()
+    {
+        $BOOKING_REFERENCE = $this->input->post('id');
+        $this->load->model('bookings/bookings_model');
+            $this->bookings_model->cancel_bookings($BOOKING_REFERENCE);
+
+    }
+
+
+
+
 	//quick and dirty ajax test to add event, title, add 15 minutes to current time and class and random id
 	public function add_event()
 	{
