@@ -19,6 +19,7 @@ if ( ! function_exists('my_clients'))
         $CI->db->select('*');
         $CI->db->from('clients');
         $CI->db->where('user_id', $user_id);
+        $CI->db->order_by('First_Name', 'asc');
         
 
         $query = $CI->db->get();
@@ -51,6 +52,7 @@ if ( ! function_exists('my_services'))
         $CI->db->select('*');
         $CI->db->from('services');
         $CI->db->where('user_id', $user_id);
+        $CI->db->order_by('Service_name', 'asc');
         
 
         $query = $CI->db->get();
