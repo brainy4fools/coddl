@@ -72,6 +72,8 @@
       	        	<br/>
 
       	        	<button type="submit" class="pull-right btn btn-purplet btn-s-xs " ><strong>Update</strong></button>
+
+                  <a href="<?php echo site_url("admin/users/generate_coddl_data/$userid"); ?>">Generate Coddl Data for user?</a>
       	        	
       	        	<?php echo form_close(); ?>
 

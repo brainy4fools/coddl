@@ -36,6 +36,19 @@ class Users extends CI_Controller {
 		}
 	}
 
+
+	public function generate_coddl_data($user_id)
+	{
+
+		$this->load->model('Stuff_user');
+		$this->Stuff_user->generate_coddl_data($user_id);
+
+
+	}
+
+
+
+
 	public function index()
 	{
 

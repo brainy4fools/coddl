@@ -17,6 +17,61 @@ class Company_details_model extends CI_Model {
 	}
 
 
+    //return true or false
+    public function if_no_data()
+    {
+        $user_id = $this->session->userdata('userid');
+
+        $this->db->select('*');
+        $this->db->from('company_details');
+        $this->db->where('user_id', $user_id);
+        
+        $query = $this->db->get();
+        
+        
+        $count = 0;
+        foreach ($query->result() as $row) 
+        {
+            $count++;
+        }
+
+        if($count > 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+        
+
+    }
+
+    public function add_company_details_coddl($user_id,$Bussiness_Name,$Description,$Address,$Website,$Mobile_Number,$Business_Type)
+    {
+        
+        //check if row return 0 first
+        //if numrow >0
+        if ($this->if_no_data()) 
+        {
+
+            $object = array(
+                'user_id'=>$user_id,'Bussiness_Name'=>$Bussiness_Name,'Description'=>$Description,'Address'=>$Address,'Website'=>$Website,'Mobile_Number'=>$Mobile_Number,'Business_Type'=>$Business_Type
+
+
+                );
+            $this->db->insert('company_details', $object);
+        }
+
+
+    }
+
+
+
+
+
+
+
     public function add_company_details($Bussiness_Name,$Description,$Address,$Website,$Mobile_Number,$Business_Type)
     {
     	
@@ -41,7 +96,7 @@ class Company_details_model extends CI_Model {
 
     		);
 
-    	$this->db->where('id', $id);
+    	
         $this->db->where('user_id', $user_id);
     	$this->db->update('company_details', $object);
 
@@ -54,7 +109,7 @@ class Company_details_model extends CI_Model {
 
     	$this->db->select('*');
     	$this->db->from('company_details');
-    	$this->db->where('id', $id);
+    	
         $this->db->where('user_id', $user_id);
 
     	$query = $this->db->get();

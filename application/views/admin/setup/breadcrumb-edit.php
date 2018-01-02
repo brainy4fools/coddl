@@ -4,7 +4,7 @@
         <!-- .breadcrumb -->
         <ul class="breadcrumb">
           <li><a href="<?php echo site_url('home'); ?>"><i class="fa fa-home"></i> Dashboard </a></li>
-          <li class='active'><a href="<?php echo site_url("admin/setup"); ?>"><i class="fa fa-list-ul"></i> <?php echo $this->uri->segment(2, 0); ?></a></li>
+          
           <li class='active'><a href="#"><i class="fa fa-list-ul"></i> Edit setup</a></li>
           
         </ul>

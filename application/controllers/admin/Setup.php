@@ -25,7 +25,7 @@ class Setup extends CI_Controller {
 
 		
 	}
-
+/*
 	public function index()
 	{
 		$this->load->model('Stuff_globals');
@@ -49,12 +49,7 @@ class Setup extends CI_Controller {
 
 
 
-	 /**
-	  *  @Description: new setup view
-	  *       @Params: params
-	  *
-	  *  	 @returns: returns
-	  */
+	
 	public function new_setup_view()
 	{
 		$this->load->model('Stuff_globals');
@@ -144,6 +139,7 @@ $SMS_Template=$this->input->post('SMS_Template');
 
 
 	}
+	*/
 
 
 	 /**
@@ -236,7 +232,7 @@ $SMS_Template=$this->input->post('SMS_Template');
 			$this->session->set_flashdata('type', '1');
 			$this->session->set_flashdata('msg', '<strong>Updated</strong> message');
 
-			redirect("admin/setup","refresh");
+			redirect("admin/setup/edit_setup_view/1","refresh");
 		}
 
 	}

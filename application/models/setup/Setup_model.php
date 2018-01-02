@@ -17,6 +17,60 @@ class Setup_model extends CI_Model {
 	}
 
 
+    //return true or false
+    public function if_no_data()
+    {
+        $user_id = $this->session->userdata('userid');
+
+        $this->db->select('*');
+        $this->db->from('setup');
+        $this->db->where('user_id', $user_id);
+        
+        $query = $this->db->get();
+        
+        
+        $count = 0;
+        foreach ($query->result() as $row) 
+        {
+            $count++;
+        }
+
+        if($count > 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+        
+
+    }
+
+
+    public function add_setup_coddl($user_id,$Enable_Notifications,$Send_by,$Reminder_advance_notice,$SMS_Template)
+    {
+        
+        //if numrow >0
+        if ($this->if_no_data()) 
+        {
+            $object = array(
+            'user_id'=>$user_id,'Enable_Notifications'=>$Enable_Notifications,'Send_by'=>$Send_by,'Reminder_advance_notice'=>$Reminder_advance_notice,'SMS_Template'=>$SMS_Template
+
+
+            );
+            $this->db->insert('setup', $object);
+        }
+
+
+    }
+
+
+
+
+
+
+
     public function add_setup($Enable_Notifications,$Send_by,$Reminder_advance_notice,$SMS_Template)
     {
     	
@@ -41,7 +95,7 @@ class Setup_model extends CI_Model {
 
     		);
 
-    	$this->db->where('id', $id);
+    	
         $this->db->where('user_id', $user_id);
     	$this->db->update('setup', $object);
 
@@ -54,7 +108,6 @@ class Setup_model extends CI_Model {
 
     	$this->db->select('*');
     	$this->db->from('setup');
-    	$this->db->where('id', $id);
         $this->db->where('user_id', $user_id);
 
     	$query = $this->db->get();

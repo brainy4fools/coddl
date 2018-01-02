@@ -17,6 +17,22 @@ class Services_model extends CI_Model {
 	}
 
 
+    public function add_services_coddl($user_id,$Service_name,$Duration,$Retail_Price)
+    {
+        
+        
+        $object = array(
+            'user_id'=>$user_id,'Service_name'=>$Service_name,'Duration'=>$Duration,'Retail_Price'=>$Retail_Price
+
+
+            );
+        $this->db->insert('services', $object);
+
+
+    }
+
+
+
     public function add_services($Service_name,$Duration,$Retail_Price)
     {
     	

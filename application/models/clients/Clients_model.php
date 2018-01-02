@@ -17,6 +17,26 @@ class Clients_model extends CI_Model {
 	}
 
 
+
+    public function add_clients_coddl($user_id,$First_Name,$Last_Name,$Mobile_Number,$Email,$Send_Notifications_by,$Client_Notes)
+    {
+        
+        
+        $object = array(
+            'user_id'=>$user_id,'First_Name'=>$First_Name,'Last_Name'=>$Last_Name,'Mobile_Number'=>$Mobile_Number,'Email'=>$Email,'Send_Notifications_by'=>$Send_Notifications_by,'Client_Notes'=>$Client_Notes
+
+
+            );
+        $this->db->insert('clients', $object);
+
+
+    }
+
+
+
+
+
+
     public function add_clients($First_Name,$Last_Name,$Mobile_Number,$Email,$Send_Notifications_by,$Client_Notes)
     {
     	
