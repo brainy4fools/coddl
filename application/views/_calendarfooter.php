@@ -210,11 +210,20 @@
             selectHelper: true,
             editable: true,
             eventLimit: true, // allow "more" link when too many events
-            events: [{
-                title: 'All Day Event',
-                start: '2017-12-01',
-                backgroundColor: '#A6DBFE'
-            }],
+            events: [
+
+            <?php foreach ($query->result() as $key) : ?>
+            {
+                    id: '<?php echo $key->BOOKING_REFERENCE; ?>',
+                    title: '<?php echo $key->SERVICE_NAME; ?> <?php echo $key->CLIENT_FIRST_NAME; ?>',
+                    start: '<?php echo $key->BOOKING_DATE_TIME; ?>',
+                    end: '<?php echo $key->BOOKING_END_DATE_TIME; ?>',
+                    className: '<?php echo $key->color; ?>'
+            },
+            <?php endforeach; ?>
+
+
+            ],
             eventDrop: function(event, delta, revertFunc) {
                 alert(event.title + " was dropped on " + event.start.format() + "\n" + event.end.format());
             },

@@ -8,6 +8,29 @@ class Calendar extends CI_Controller {
 	}
 
 
+
+
+
+    public function load_calendar()
+    {
+
+        $this->load->model('Stuff_globals');
+        $data = $this->Stuff_globals->dump_all();
+
+        $data['queryx'] = $queryx;
+
+
+        $this->load->model('bookings/bookings_model');
+        $query = $this->bookings_model->get_all();
+        
+        $data['query'] = $query;
+
+        $this->load->view('custom/calendar', $data);
+
+
+    }
+
+
 	//quick and dirty ajax test to add event, title, add 15 minutes to current time and class and random id
 	public function add_event()
 	{
@@ -42,6 +65,32 @@ class Calendar extends CI_Controller {
 
        $result = array();
        $result = array('title' => $title,'class'=>$class,'id'=>$id,'end'=>$endTime);
+
+
+       //now add to the bookings table
+
+       $CLIENT_FIRST_NAME = $client;
+       $CLIENT_LAST_NAME = $client;
+       $STAFF_FIRST_NAME = 'karen';
+       $STAFF_LAST_NAME = 'h';
+       $BOOKING_DATE_TIME = $date;
+       $BOOKING_DATE = 'x';
+       $BOOKING_TIME = 'x';
+       $BOOKING_REFERENCE = $id;
+       $SERVICE_NAME = $service;
+       $BUSINESS_NAME = 'x';
+       $LOCATION_NAME = 'x';
+       $LOCATION_PHONE = 'x';
+       $BOOKING_END_DATE_TIME = $endTime;
+       $color = $class;
+
+
+       $this->load->model('bookings/bookings_model');
+            $this->bookings_model->add_bookings($CLIENT_FIRST_NAME,$CLIENT_LAST_NAME,$STAFF_FIRST_NAME,$STAFF_LAST_NAME,$BOOKING_DATE_TIME,$BOOKING_DATE,$BOOKING_TIME,$BOOKING_REFERENCE,$SERVICE_NAME,$BUSINESS_NAME,$LOCATION_NAME,$LOCATION_PHONE,$BOOKING_END_DATE_TIME,$color);
+
+
+
+
 
 		echo json_encode($result);
 
