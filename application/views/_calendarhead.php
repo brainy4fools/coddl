@@ -846,6 +846,7 @@ h1,h2,h3,h4,h5{
             <input type="text" class="form-control input-sm" id="search-note" placeholder="search">
           </div>
            <img class="img-responsive" src="<?= $theme['logo']; ?>" alt="image" />
+           <div class="m-l">Welcome back <b><?php echo my_username(); ?></b></div>
         </header>
         <section class="scrollable wrapper">          
           
