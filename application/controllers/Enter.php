@@ -7,9 +7,6 @@ class Enter extends CI_Controller {
 
 	public function index()
 	{
-		redirect("admin/dashboard");	
+		redirect('welcome');	
 	}
 }
-
-/* End of file Enter.php */
-/* Location: ./application/controllers/admin/Enter.php */
