@@ -93,7 +93,7 @@
                         
                         <?php endforeach; ?>
 
-                        <a href="#">Preview Message</a>
+                        <a href="#" id="preview">Preview Message</a>
 
 
                         <button type="submit" class="btn btn-purplet btn-s-xs pull-right f" id=""> <i class="fa fa-check"></i> <strong>Save</strong> </button>

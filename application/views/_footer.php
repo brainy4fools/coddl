@@ -1,3 +1,30 @@
+<div class="modal fade" id="sms-schedule">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">SMS Message</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                       Hi Sarah, this is a friendly reminder about your appointment with Business on 2018-03-02 13:00, to cancel text 0123456789.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
+
+
+
   </section>
       </section>
       <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
@@ -114,6 +141,13 @@
         $(function() {
             $('.gallery a').lightbox();
         });
+
+        $('#preview').click(function(){
+            $('#sms-schedule').appendTo("body").modal('show');
+        });
+
+
+
     });
 </script>
 </body>
