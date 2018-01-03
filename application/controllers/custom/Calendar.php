@@ -108,19 +108,28 @@ class Calendar extends CI_Controller {
 
 
        //now add to the bookings table
+       $arr = explode("T", $date);
+       
+
 
        $CLIENT_FIRST_NAME = $client;
        $CLIENT_LAST_NAME = $client;
        $STAFF_FIRST_NAME = 'karen';
        $STAFF_LAST_NAME = 'h';
        $BOOKING_DATE_TIME = $date;
-       $BOOKING_DATE = 'x';
-       $BOOKING_TIME = 'x';
+       $BOOKING_DATE = $arr[0];
+       $BOOKING_TIME = $arr[1];
        $BOOKING_REFERENCE = $id;
        $SERVICE_NAME = $service;
-       $BUSINESS_NAME = 'x';
+
+
+       $this->load->model('company_details/company_details_model');
+       
+
+
+       $BUSINESS_NAME = $this->company_details_model->get_bussiness_name();
        $LOCATION_NAME = 'x';
-       $LOCATION_PHONE = 'x';
+       $LOCATION_PHONE = $this->company_details_model->get_bussiness_phone();
        $BOOKING_END_DATE_TIME = $endTime;
        $color = $class;
 

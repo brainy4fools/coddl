@@ -17,6 +17,47 @@ class Company_details_model extends CI_Model {
 	}
 
 
+
+    public function get_bussiness_name()
+    {
+        $user_id = $this->session->userdata('userid');
+        $this->db->select('*');
+        $this->db->from('company_details');
+        $this->db->where('user_id', $user_id);
+        
+        $query = $this->db->get();
+        
+        $Bussiness_Name = "";
+        foreach ($query->result() as $row) 
+        {
+            $Bussiness_Name =  $row->Bussiness_Name;
+        }
+        
+        return $Bussiness_Name;
+
+    }
+
+    public function get_bussiness_phone()
+    {
+        $user_id = $this->session->userdata('userid');
+        $this->db->select('*');
+        $this->db->from('company_details');
+        $this->db->where('user_id', $user_id);
+        
+        $query = $this->db->get();
+        
+        $Mobile_Number = "";
+        foreach ($query->result() as $row) 
+        {
+            $Mobile_Number =  $row->Mobile_Number;
+        }
+        
+        return $Mobile_Number;
+
+    }
+
+
+
     //return true or false
     public function if_no_data($user_id)
     {
