@@ -18,9 +18,9 @@ class Setup_model extends CI_Model {
 
 
     //return true or false
-    public function if_no_data()
+    public function if_no_data($user_id)
     {
-        $user_id = $this->session->userdata('userid');
+       
 
         $this->db->select('*');
         $this->db->from('setup');
@@ -52,7 +52,7 @@ class Setup_model extends CI_Model {
     {
         
         //if numrow >0
-        if ($this->if_no_data()) 
+        if ($this->if_no_data($user_id)) 
         {
             $object = array(
             'user_id'=>$user_id,'Enable_Notifications'=>$Enable_Notifications,'Send_by'=>$Send_by,'Reminder_advance_notice'=>$Reminder_advance_notice,'SMS_Template'=>$SMS_Template

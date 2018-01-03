@@ -18,9 +18,9 @@ class Company_details_model extends CI_Model {
 
 
     //return true or false
-    public function if_no_data()
+    public function if_no_data($user_id)
     {
-        $user_id = $this->session->userdata('userid');
+       
 
         $this->db->select('*');
         $this->db->from('company_details');
@@ -52,7 +52,7 @@ class Company_details_model extends CI_Model {
         
         //check if row return 0 first
         //if numrow >0
-        if ($this->if_no_data()) 
+        if ($this->if_no_data($user_id)) 
         {
 
             $object = array(
