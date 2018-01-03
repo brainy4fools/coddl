@@ -10,7 +10,7 @@
                         
                             <div class="col-sm-4" style="padding-bottom:50px;">
                                 © coddl, LLC 2017 <br/>
-                                <div class="coddl-about">coddl is a division of Alpha Group <br/> T: 0116 123456</div>
+                                <div class="coddl-about">coddl is a division of RmdWeb <br/> T: 01455 240 077</div>
                                 
                                  
                             </div>

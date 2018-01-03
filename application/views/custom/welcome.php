@@ -20,7 +20,7 @@ Simple, flexible and powerful booking software for your business, it's totally F
           <div class="col-sm-4">
           	
                <h3>Schedule Appointments</h3>
-Coddl is a clean, simple tool with a powerful calendar that can handle all your salon bookings. Features include multiple services, products, pos.
+Coddl is a clean, simple tool with a powerful calendar that can handle all your company's bookings. Features include multiple services, products, pos.
            
           </div>
           <div class="col-sm-4">

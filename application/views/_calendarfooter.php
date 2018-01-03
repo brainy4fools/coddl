@@ -199,7 +199,7 @@
                 if(view.name != 'month')
                 {
                     $('#time').val(date.format());
-                    $('#modal-form').modal();
+                    $('#modal-form').appendTo("body").modal('show');
                 }
 
                 
