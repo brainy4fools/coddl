@@ -25,19 +25,21 @@ class Stuff_user extends CI_Model {
 	 	//add default clients
 	 	$this->load->model('clients/clients_model');
 			$this->clients_model->add_clients_coddl($user_id,'Joe','Blogs','0123456789','joe@mail.com','SMS','Client Notes');
+            $this->clients_model->add_clients_coddl($user_id,'Sara','Smith','0123456711','sara@mail.com','SMS','Client Notes');
 
 		//add default services
 		$this->load->model('services/services_model');
-			$this->services_model->add_services_coddl($user_id,'Blow Dry','45 minutes','25.00');
+			$this->services_model->add_services_coddl($user_id,'Massage','45 minutes','25.00');
+            $this->services_model->add_services_coddl($user_id,'Manicure','30 minutes','10.00');
 
 
 		//add default company details
 		$this->load->model('company_details/company_details_model');
-			$this->company_details_model->add_company_details_coddl($user_id,'Company Name','Company Description','Company Address','http://www.company.com','0123456789','Salon');
+			$this->company_details_model->add_company_details_coddl($user_id,'Company Name','Company Description','Company Address','http://www.company.com','01234567891','Salon');
 
 		//add default setup details
 			$this->load->model('setup/setup_model');
-			$this->setup_model->add_setup_coddl($user_id,'No','SMS','2 hours','Hi CLIENT_FIRST_NAME, this is a friendly reminder about your appointment with BUSINESS_NAME on BOOKING_DATE_TIME, to cancel text LOCATION_PHONE.');
+			$this->setup_model->add_setup_coddl($user_id,'Yes','SMS','1 hour','Hi CLIENT_FIRST_NAME, this is a friendly reminder about your appointment with BUSINESS_NAME on BOOKING_DATE_TIME, to cancel text LOCATION_PHONE.');
 
 
 
