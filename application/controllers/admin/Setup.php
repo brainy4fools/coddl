@@ -198,6 +198,10 @@ $SMS_Template=$this->input->post('SMS_Template');
 $Send_by=$this->input->post('Send_by');
 $Reminder_advance_notice=$this->input->post('Reminder_advance_notice');
 $SMS_Template=$this->input->post('SMS_Template');
+$Reschedule_Template=$this->input->post('Reschedule_Template');
+$Confirm_Template=$this->input->post('Confirm_Template');
+$Cancelled_Template=$this->input->post('Cancelled_Template');
+
 
 
 
@@ -242,7 +246,7 @@ $SMS_Template=$this->input->post('SMS_Template');
 			//successful
 
 			$this->load->model('setup/setup_model');
-			$this->setup_model->edit_setup($id,$Enable_Notifications,$Send_by,$Reminder_advance_notice,$SMS_Template);
+			$this->setup_model->edit_setup($id,$Enable_Notifications,$Send_by,$Reminder_advance_notice,$SMS_Template,$Reschedule_Template,$Confirm_Template,$Cancelled_Template);
 
 			$this->session->set_flashdata('type', '1');
 			$this->session->set_flashdata('msg', '<strong>Updated</strong> message');

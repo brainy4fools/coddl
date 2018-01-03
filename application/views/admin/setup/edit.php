@@ -82,13 +82,42 @@
     </div>
 </div>
 <div class="form-group">
-    <label>SMS Template</label> 
+    <label>Reminder Template</label> 
     <div class="igs-small">This will automatically be sent to your customers, please use the fields shown</div>
     <textarea name="SMS_Template"  id="inp-box" class="form-control f" rows="5"  placeholder="Type here" data-toggle="tooltip" data-placement="top"><?php echo set_value('SMS_Template',$key->SMS_Template); ?></textarea>
     <div class='errors'>
         <?php echo form_error('SMS_Template'); ?>
     </div>
 </div>
+
+<div class="form-group">
+    <label>Reschedule Template</label> 
+    <div class="igs-small">This will text message is sent when rescheduling an appointment</div>
+    <textarea name="Reschedule_Template"  id="inp-box" class="form-control f" rows="5"  placeholder="Type here" data-toggle="tooltip" data-placement="top"><?php echo set_value('Reschedule_Template',$key->Reschedule_Template); ?></textarea>
+    <div class='errors'>
+        <?php echo form_error('Reschedule_Template'); ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>Confirm Template</label> 
+    <div class="igs-small">This will text message to immediately confirm appointment</div>
+    <textarea name="Confirm_Template"  id="inp-box" class="form-control f" rows="5"  placeholder="Type here" data-toggle="tooltip" data-placement="top"><?php echo set_value('Confirm_Template',$key->Confirm_Template); ?></textarea>
+    <div class='errors'>
+        <?php echo form_error('Confirm_Template'); ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>Cancelled Template</label> 
+    <div class="igs-small">This will text message sent when cancelling an appointment</div>
+    <textarea name="Cancelled_Template"  id="inp-box" class="form-control f" rows="5"  placeholder="Type here" data-toggle="tooltip" data-placement="top"><?php echo set_value('Cancelled_Template',$key->Cancelled_Template); ?></textarea>
+    <div class='errors'>
+        <?php echo form_error('Cancelled_Template'); ?>
+    </div>
+</div>
+
+
 
                         
                         <?php endforeach; ?>

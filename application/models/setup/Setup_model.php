@@ -85,19 +85,20 @@ class Setup_model extends CI_Model {
 
     }
 
-    public function edit_setup($id,$Enable_Notifications,$Send_by,$Reminder_advance_notice,$SMS_Template)
+    public function edit_setup($id,$Enable_Notifications,$Send_by,$Reminder_advance_notice,$SMS_Template,$Reschedule_Template,$Confirm_Template,$Cancelled_Template)
     {
 
         $user_id = $this->session->userdata('userid');
-    	$object = array(
-    		'user_id'=>$user_id,'Enable_Notifications'=>$Enable_Notifications,'Send_by'=>$Send_by,'Reminder_advance_notice'=>$Reminder_advance_notice,'SMS_Template'=>$SMS_Template
+        $object = array(
+            'user_id'=>$user_id,'Enable_Notifications'=>$Enable_Notifications,'Send_by'=>$Send_by,'Reminder_advance_notice'=>$Reminder_advance_notice,'SMS_Template'=>$SMS_Template,'Reschedule_Template' => $Reschedule_Template,
+                'Confirm_Template' =>$Confirm_Template, 'Cancelled_Template' =>$Cancelled_Template
 
 
-    		);
+            );
 
-    	
+        
         $this->db->where('user_id', $user_id);
-    	$this->db->update('setup', $object);
+        $this->db->update('setup', $object);
 
 
     }
