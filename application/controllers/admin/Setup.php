@@ -25,6 +25,21 @@ class Setup extends CI_Controller {
 
 		
 	}
+
+
+    //function to preview the message
+    public function preview_message()
+    {
+
+
+
+
+    }
+
+
+
+
+
 /*
 	public function index()
 	{

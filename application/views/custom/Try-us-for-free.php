@@ -68,9 +68,9 @@
                                     <?php echo form_error('phone'); ?> </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-1">
                         </div>
-                        <div class="col-sm-3 text-md ">
+                        <div class="col-sm-5 text-md ">
                             I'd like a demo:
                         </div>
                         <div class="col-sm-4">

@@ -70,6 +70,34 @@
 </div>
 
 
+<div class="modal fade" id="cancel-appointment">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Appointment</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                       Click to cancel appointment.
+
+                       <input type="text" name="ref" id="ref" value="" style="display:none;"/>
+
+                       <button id='c-cancel' type="submit" class="btn btn-purplet btn-s-xs pull-right f"> <strong>Cancel</strong>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
 
 
   </section>
@@ -150,6 +178,31 @@
        });
 
 
+        $('#c-cancel').click(function(){
+
+            var id = $('#ref').val();
+
+             $.ajax({
+                url: "<?php echo site_url('custom/calendar/cancel_event'); ?>",
+                type: 'post',
+                data: {id:id},
+                dataType: 'text',
+                success: function (data) {
+                
+
+            
+
+                    }
+                });
+                $("#calendar").fullCalendar('removeEvents', id);
+                $('#cancel-appointment').modal('hide');
+
+        });
+
+
+   
+
+
 
         $('#calendar').fullCalendar({
             header: {
@@ -176,27 +229,20 @@
              //test to delete
              eventClick: function(calEvent, jsEvent, view) {
                 
-
                 var id = calEvent.id;
+                $('#ref').val(id);
+
+                $('#cancel-appointment').appendTo("body").modal('show');
+                
                 
 
 
-                $.ajax({
-                url: "<?php echo site_url('custom/calendar/cancel_event'); ?>",
-                type: 'post',
-                data: {id:id},
-                dataType: 'text',
-                success: function (data) {
                 
-
-            
-
-                    }
-                });
-                $("#calendar").fullCalendar('removeEvents', calEvent.id);
 
 
             },
+
+           
 
             dayClick: function(date, jsEvent, view) {
                 
@@ -207,8 +253,7 @@
                 }
 
                 
-                //alert('Clicked on: ' + date.format());
-                //alert('Current view: ' + view.name);
+               
                 
                 
 
@@ -258,7 +303,7 @@
                 dataType: 'text',
                 success: function (data) {
                 
-
+                    alert('Send reschedule message?');
             
 
                 }
