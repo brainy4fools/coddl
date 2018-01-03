@@ -39,7 +39,7 @@ class Stuff_user extends CI_Model {
 
 		//add default setup details
 			$this->load->model('setup/setup_model');
-			$this->setup_model->add_setup_coddl($user_id,'Yes','SMS','1 hour','Hi CLIENT_FIRST_NAME, this is a friendly reminder about your appointment with BUSINESS_NAME on BOOKING_DATE_TIME, to cancel text LOCATION_PHONE.');
+			$this->setup_model->add_setup_coddl($user_id,'Yes','SMS','1 hour','Hi CLIENT_FIRST_NAME, this is a friendly reminder about your appointment with BUSINESS_NAME on BOOKING_DATE_TIME, to cancel text LOCATION_PHONE.','Hi CLIENT_FIRST_NAME,Your appointment with booking reference BOOKING_REFERENCE has been updated. Here are the new details:BUSINESS_NAME SERVICE_NAME BOOKING_DATE_TIME At this location: LOCATION_NAME LOCATION_PHONE Need to change your appointment? Please contact BUSINESS_NAME on LOCATION_PHONE.','Hi CLIENT_FIRST_NAME,Your new appointment with booking reference BOOKING_REFERENCE is confirmed. Here are the details:BUSINESS_NAME SERVICE_NAME BOOKING_DATE_TIME At this location: LOCATION_NAME LOCATION_PHONE Need to change your appointment? Please contact BUSINESS_NAME on LOCATION_PHONE.','Hi CLIENT_FIRST_NAME,Your appointment with booking reference BOOKING_REFERENCE was cancelled. Here are the details: BUSINESS_NAME SERVICE_NAME BOOKING_DATE_TIME At this location:LOCATION_NAME LOCATION_PHONE Need to get in touch? Please contact BUSINESS_NAME on LOCATION_PHONE.');
 
 
 

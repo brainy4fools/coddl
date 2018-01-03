@@ -48,14 +48,15 @@ class Setup_model extends CI_Model {
     }
 
 
-    public function add_setup_coddl($user_id,$Enable_Notifications,$Send_by,$Reminder_advance_notice,$SMS_Template)
+    public function add_setup_coddl($user_id,$Enable_Notifications,$Send_by,$Reminder_advance_notice,$SMS_Template,$Reschedule_Template,$Confirm_Template,$Cancelled_Template)
     {
         
         //if numrow >0
         if ($this->if_no_data($user_id)) 
         {
             $object = array(
-            'user_id'=>$user_id,'Enable_Notifications'=>$Enable_Notifications,'Send_by'=>$Send_by,'Reminder_advance_notice'=>$Reminder_advance_notice,'SMS_Template'=>$SMS_Template
+            'user_id'=>$user_id,'Enable_Notifications'=>$Enable_Notifications,'Send_by'=>$Send_by,'Reminder_advance_notice'=>$Reminder_advance_notice,'SMS_Template'=>$SMS_Template,'Reschedule_Template' => $Reschedule_Template,
+                'Confirm_Template' =>$Confirm_Template, 'Cancelled_Template' =>$Cancelled_Template
 
 
             );
