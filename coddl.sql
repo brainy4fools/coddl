@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jan 04, 2018 at 03:53 PM
+-- Generation Time: Jan 04, 2018 at 08:24 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.5.18
 
@@ -91,14 +91,14 @@ CREATE TABLE `IGS_bookings` (
   `color` varchar(512) NOT NULL,
   `CLIENT_MOBILE` varchar(255) NOT NULL,
   `SERVICE_COST` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_bookings`
 --
 
 INSERT INTO `IGS_bookings` (`id`, `user_id`, `CLIENT_FIRST_NAME`, `CLIENT_LAST_NAME`, `STAFF_FIRST_NAME`, `STAFF_LAST_NAME`, `BOOKING_DATE_TIME`, `BOOKING_DATE`, `BOOKING_TIME`, `BOOKING_REFERENCE`, `SERVICE_NAME`, `BUSINESS_NAME`, `LOCATION_NAME`, `LOCATION_PHONE`, `BOOKING_END_DATE_TIME`, `color`, `CLIENT_MOBILE`, `SERVICE_COST`) VALUES
-(20, 4, 'Joe Blogs', 'Joe Blogs', 'karen', 'h', '2018-01-05T11:00:00', '2018-01-05', '11:00:00', 'Pohcz64B', 'Manicure', 'Company Name', 'x', '01234567891', '2018-01-05T11:30:00', 'blue', '0123456789', '10.00');
+(21, 4, 'Sara Smith', 'Sara Smith', 'karen', 'h', '2018-01-05T11:15:00', '2018-01-05', '11:15:00', 'iLwdAqZV', 'Massage', 'Company Name', 'x', '01234567891', '2018-01-05T11:45:00', 'blue', '0123456711', '25.00');
 
 -- --------------------------------------------------------
 
@@ -369,7 +369,7 @@ CREATE TABLE `IGS_permissions` (
 `permissionID` int(11) NOT NULL,
   `permission` varchar(200) DEFAULT NULL,
   `order_position` int(11) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_permissions`
@@ -393,7 +393,8 @@ INSERT INTO `IGS_permissions` (`permissionID`, `permission`, `order_position`) V
 (72, 'services', 0),
 (73, 'company_details', 0),
 (74, 'setup', 0),
-(75, 'bookings', 0);
+(75, 'bookings', 0),
+(76, 'textanywhere', 0);
 
 -- --------------------------------------------------------
 
@@ -448,6 +449,7 @@ INSERT INTO `IGS_permission_map` (`groupID`, `permissionID`) VALUES
 (1, 73),
 (1, 74),
 (1, 75),
+(1, 76),
 (42, 70),
 (42, 71),
 (42, 72),
@@ -466,7 +468,7 @@ CREATE TABLE `IGS_plugins` (
   `name` varchar(255) NOT NULL,
   `install` datetime NOT NULL,
   `status` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_plugins`
@@ -478,7 +480,8 @@ INSERT INTO `IGS_plugins` (`id`, `name`, `install`, `status`) VALUES
 (4, 'services', '2017-12-30 23:38:00', 1),
 (5, 'company_details', '2018-01-02 10:40:45', 1),
 (6, 'setup', '2018-01-02 11:13:15', 1),
-(7, 'bookings', '2018-01-02 14:45:18', 1);
+(7, 'bookings', '2018-01-02 14:45:18', 1),
+(8, 'textanywhere', '2018-01-04 19:07:05', 1);
 
 -- --------------------------------------------------------
 
@@ -680,6 +683,19 @@ CREATE TABLE `IGS_staff` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `IGS_textanywhere`
+--
+
+CREATE TABLE `IGS_textanywhere` (
+`id` int(11) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `External` varchar(255) NOT NULL,
+  `label` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `IGS_user`
 --
 
@@ -709,7 +725,7 @@ CREATE TABLE `IGS_user` (
 --
 
 INSERT INTO `IGS_user` (`id`, `name`, `password`, `joindate`, `logins`, `is_logged_in`, `isadmin`, `companyid`, `company`, `email`, `number`, `activ_status`, `activ_key`, `logo`, `about`, `credits`, `permissiongroup`, `fullname`) VALUES
-(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 57, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, ''),
+(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 60, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, ''),
 (5, 'sara', '$2y$10$NJ5AA9NEV9kTvAmPbCLq/.Kb5Fk6nsWN6Td1CKJ5.E7pAO5CKBO3K', '2018-01-02', 0, 0, 0, 0, '', 'sara@mail.com', '', 0, '', '', '', 0, 42, '');
 
 --
@@ -855,6 +871,12 @@ ALTER TABLE `IGS_staff`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `IGS_textanywhere`
+--
+ALTER TABLE `IGS_textanywhere`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `IGS_user`
 --
 ALTER TABLE `IGS_user`
@@ -878,7 +900,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `IGS_bookings`
 --
 ALTER TABLE `IGS_bookings`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `IGS_cats`
 --
@@ -928,7 +950,7 @@ MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 -- AUTO_INCREMENT for table `IGS_permissions`
 --
 ALTER TABLE `IGS_permissions`
-MODIFY `permissionID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=76;
+MODIFY `permissionID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT for table `IGS_permission_groups`
 --
@@ -938,7 +960,7 @@ MODIFY `groupID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 -- AUTO_INCREMENT for table `IGS_plugins`
 --
 ALTER TABLE `IGS_plugins`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `IGS_routes`
 --
@@ -969,6 +991,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 ALTER TABLE `IGS_staff`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `IGS_textanywhere`
+--
+ALTER TABLE `IGS_textanywhere`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `IGS_user`
 --

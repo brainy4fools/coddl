@@ -34,6 +34,14 @@ class Cms_login extends CI_Controller {
         $message = 'hi';
         $recipient = '';
 
+
+        $this->load->model('textanywhere/textanywhere_model');
+    
+        $external = $this->textanywhere_model->get_external('main');
+        $password = $this->textanywhere_model->get_password('main');
+
+        
+
         //where the magic happens
         include('text-messaging/nusoap.php');
 
@@ -43,8 +51,8 @@ class Cms_login extends CI_Controller {
 
         $parameters = array( 
             'returnCSVString' => 'false', 
-            'externalLogin' => '', 
-            'password' => '', 
+            'externalLogin' => $external, 
+            'password' => $password, 
             'clientBillingReference' => 'coddl', // Identifies coddl SMS on TextAnywhere account statements
             'clientMessageReference' => ''.$unique_reference.'', // Used to get delivery status, must be unique!
             'originator' => ''.$message_name.'', 
