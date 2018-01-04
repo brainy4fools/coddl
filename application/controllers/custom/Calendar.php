@@ -39,7 +39,7 @@ class Calendar extends CI_Controller {
         $user_id = $this->session->userdata('userid');
 
          //do the swap for custom variables
-        // $message_name = 'coddl';
+         $message_name = 'Coddl';
         // $message = 'hi';
         // $recipient = '';
 
