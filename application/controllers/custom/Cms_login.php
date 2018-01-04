@@ -22,6 +22,50 @@ class Cms_login extends CI_Controller {
     }
 
 
+    //text anywhere test
+    public function send_text()
+    {
+
+
+        $user_id = $this->session->userdata('userid');
+
+         //do the swap for custom variables
+        $message_name = 'coddl';
+        $message = 'hi';
+        $recipient = '';
+
+        //where the magic happens
+        include('text-messaging/nusoap.php');
+
+        $random = "";
+        $random .= rand(100000000, 999999999);
+        $unique_reference = substr($random,0,10);
+
+        $parameters = array( 
+            'returnCSVString' => 'false', 
+            'externalLogin' => '', 
+            'password' => '', 
+            'clientBillingReference' => 'coddl', // Identifies coddl SMS on TextAnywhere account statements
+            'clientMessageReference' => ''.$unique_reference.'', // Used to get delivery status, must be unique!
+            'originator' => ''.$message_name.'', 
+            'destinations' => ''.$recipient.'', 
+            'body' => ''.$message.'', 
+            'validity' => '72', 
+            'characterSetID' => '2', 
+            'replyMethodID' => '1', 
+            'replyData' => '', 
+            'statusNotificationUrl' => 'http://www.coddl.co.uk/resources/php/sms-updateStatus.php' // URL to send delivery status notifications to, important!
+        );  
+        $nusoapclient = new nusoapclient('http://www.textapp.net/webservice/service.asmx?wsdl'); 
+        $result = $nusoapclient->call('SendSMS',$parameters,'http://www.textapp.net/','http://www.textapp.net/SendSMS');
+
+
+
+
+
+    }
+
+
     
 
 
