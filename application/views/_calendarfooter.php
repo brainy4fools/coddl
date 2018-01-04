@@ -214,7 +214,7 @@
 
                     var id = data.id;
 
-                    tooltip = '<div class="tooltiptopicevent">' + '<b>Info:</b> ' + data.title + ' ' + data.mobile + ' Cost '+data.cost+ ' With '+ data.staff +'</div>';
+                    tooltip = '<div class="tooltiptopicevent">' + '<b>Info: Ref</b> ' + data.id + ' ' + data.title + ' ' + data.mobile + ' Cost '+data.cost+ ' With '+ data.staff +'</div>';
             
 
 

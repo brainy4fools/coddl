@@ -192,7 +192,7 @@ class Calendar extends CI_Controller {
 
         //send text message
        $message_name = 'Cancel';  //IMPORT MUST BE LESS THAN 10 CHARACTERS!
-        $message = "Hi $CLIENT_FIRST_NAME, your $SERVICE_NAME on $BOOKING_DATE  has been cancelled";
+        $message = "Hi $CLIENT_FIRST_NAME,Your appointment with booking reference $BOOKING_REFERENCE was cancelled. Here are the details: $BUSINESS_NAME $SERVICE_NAME $BOOKING_DATE_TIME. Need to get in touch? Please contact $BUSINESS_NAME on $LOCATION_PHONE.";
         $recipient = $CLIENT_MOBILE;
 
 

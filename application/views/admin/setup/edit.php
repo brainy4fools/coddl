@@ -155,7 +155,6 @@
                     SERVICE_NAME    <br/> 
     <br/> 
                     BUSINESS_NAME    <br/> 
-                    LOCATION_NAME    <br/> 
                     LOCATION_PHONE    <br/> 
 
                 </div>
