@@ -69,23 +69,30 @@
     <!-- /.modal-dialog -->
 </div>
 
-
+<!-- cancel appointment dialog -->
 <div class="modal fade" id="cancel-appointment">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Cancel Appointment</h4>
+              <h4 class="modal-title"> Appointment Details</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
 
                     <div class="col-sm-12">
-                       Click to cancel appointment.
+                       
+                       <div id="m-i"></div>
 
                        <input type="text" name="ref" id="ref" value="" style="display:none;"/>
 
-                       <button id='c-cancel' type="submit" class="btn btn-purplet btn-s-xs pull-right f"> <strong>Cancel</strong>
+                       <button id='c-cancel' type="submit" class="btn btn-purplet btn-s-xs f"> <strong>Send Cancel text</strong>
+                        </button>
+
+                        <button id='c-confirm' type="submit" class="btn btn-purplet btn-s-xs f m-l"> <strong>Send Confirm text</strong>
+                        </button>
+
+                        <button id='r-remove' type="submit" class="btn btn-purplet btn-s-xs f m-t"> <strong>Just remove</strong>
                         </button>
 
                     </div>
@@ -96,6 +103,8 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+
 
 
 
@@ -199,6 +208,48 @@
 
         });
 
+        $('#c-confirm').click(function(){
+
+            var id = $('#ref').val();
+
+             $.ajax({
+                url: "<?php echo site_url('custom/calendar/confirm_event'); ?>",
+                type: 'post',
+                data: {id:id},
+                dataType: 'text',
+                success: function (data) {
+                
+
+                
+
+                    }
+                });
+                
+                $('#cancel-appointment').modal('hide');
+
+        });
+
+        $('#r-remove').click(function(){
+
+            var id = $('#ref').val();
+
+             $.ajax({
+                url: "<?php echo site_url('custom/calendar/cancel_event_r'); ?>",
+                type: 'post',
+                data: {id:id},
+                dataType: 'text',
+                success: function (data) {
+                
+
+                
+
+                    }
+                });
+                $("#calendar").fullCalendar('removeEvents', id);
+                $('#cancel-appointment').modal('hide');
+
+        });
+
 
    
 
@@ -241,6 +292,18 @@
                 
                 var id = calEvent.id;
                 $('#ref').val(id);
+
+                 // id: '
+                 // title: '
+                 // start: '
+                 // end: '
+                 // className:
+                 // mobile: '
+                 // cost: '
+                 // staff: '
+
+
+                $('#m-i').html(calEvent.staff + calEvent.id + calEvent.title + calEvent.mobile + calEvent.cost);
 
                 $('#cancel-appointment').appendTo("body").modal('show');
                 
