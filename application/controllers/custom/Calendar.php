@@ -30,6 +30,33 @@ class Calendar extends CI_Controller {
 
     }
 
+    //via ajax
+    public function get_info()
+    {
+        $BOOKING_REFERENCE = $this->input->post('id');
+
+
+        $user_id = $this->session->userdata('userid');
+
+        $this->db->select('*');
+        $this->db->from('bookings');
+        $this->db->where('user_id', $user_id);
+        $this->db->where('BOOKING_REFERENCE', $BOOKING_REFERENCE);
+        
+        $query = $this->db->get();
+        
+        $message = "";
+        foreach ($query->result() as $row) 
+        {
+            echo $row->CLIENT_FIRST_NAME;
+        }
+        
+        echo $message;
+
+
+
+    }
+
 
 
     //via ajax

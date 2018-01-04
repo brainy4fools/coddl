@@ -211,16 +211,26 @@
                 right: 'month,agendaWeek,agendaDay'
             },
             eventMouseover: function(data, event, view) {
-                tooltip = '<div class="tooltiptopicevent">' + 'Title: ' + data.title + '</br>' + 'ID: ' + data.id + '</div>';
-                $("body").append(tooltip);
-                $(this).mouseover(function(e) {
-                    $(this).css('z-index', 10000);
-                    $('.tooltiptopicevent').fadeIn('500');
-                    $('.tooltiptopicevent').fadeTo('200', 1.9);
-                }).mousemove(function(e) {
-                    $('.tooltiptopicevent').css('top', e.pageY + 10);
-                    $('.tooltiptopicevent').css('left', e.pageX + 20);
-                });
+
+                    var id = data.id;
+
+                    tooltip = '<div class="tooltiptopicevent">' + '<b>Info:</b> ' + data.title + ' ' + data.mobile + ' Cost '+data.cost+ ' With '+ data.staff +'</div>';
+            
+
+
+                    $("body").append(tooltip);
+                    $(this).mouseover(function(e) {
+                        $(this).css('z-index', 10000);
+                        $('.tooltiptopicevent').fadeIn('500');
+                        $('.tooltiptopicevent').fadeTo('200', 1.9);
+                    }).mousemove(function(e) {
+                        $('.tooltiptopicevent').css('top', e.pageY + 10);
+                        $('.tooltiptopicevent').css('left', e.pageX + 20);
+                    });
+
+
+
+                
             },
             eventMouseout: function(data, event, view) {
                 $(this).css('z-index', 8);
@@ -252,10 +262,6 @@
                     $('#modal-form').appendTo("body").modal('show');
                 }
 
-                
-               
-                
-                
 
             },
 
@@ -283,7 +289,10 @@
                     title: '<?php echo $key->SERVICE_NAME; ?> <?php echo $key->CLIENT_FIRST_NAME; ?>',
                     start: '<?php echo $key->BOOKING_DATE_TIME; ?>',
                     end: '<?php echo $key->BOOKING_END_DATE_TIME; ?>',
-                    className: '<?php echo $key->color; ?>'
+                    className: '<?php echo $key->color; ?>',
+                    mobile: '<?php echo $key->CLIENT_MOBILE; ?>',
+                    cost: '<?php echo $key->SERVICE_COST; ?>',
+                    staff: '<?php echo $key->STAFF_FIRST_NAME; ?>'
             },
             <?php endforeach; ?>
 
