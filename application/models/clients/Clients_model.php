@@ -111,6 +111,33 @@ class Clients_model extends CI_Model {
 
     }
 
+    //get the full name
+    public function get_client_mobile($id)
+    {
+        $user_id = $this->session->userdata('userid');
+
+        $this->db->select('*');
+        $this->db->from('clients');
+        $this->db->where('id', $id);
+        $this->db->where('user_id', $user_id);
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+
+        
+        
+        $fullname = "";
+        foreach ($query->result() as $row) 
+        {
+            $fullname =  $row->Mobile_Number;
+        }
+        
+            
+        return $fullname;
+
+
+    }
+
     public function delete_clients($id)
     {
         $user_id = $this->session->userdata('userid');

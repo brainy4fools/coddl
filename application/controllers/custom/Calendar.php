@@ -92,6 +92,8 @@ class Calendar extends CI_Controller {
 
       $this->load->model('services/services_model');
       $service = $this->services_model->get_service_name($this->input->post('service'));
+
+
       
 
 
@@ -122,6 +124,9 @@ class Calendar extends CI_Controller {
        $BOOKING_REFERENCE = $id;
        $SERVICE_NAME = $service;
 
+       $CLIENT_MOBILE = $this->clients_model->get_client_mobile($this->input->post('client'));
+       $SERVICE_COST  = $this->services_model->get_service_cost($this->input->post('service'));
+
 
        $this->load->model('company_details/company_details_model');
        
@@ -135,7 +140,7 @@ class Calendar extends CI_Controller {
 
 
        $this->load->model('bookings/bookings_model');
-            $this->bookings_model->add_bookings($CLIENT_FIRST_NAME,$CLIENT_LAST_NAME,$STAFF_FIRST_NAME,$STAFF_LAST_NAME,$BOOKING_DATE_TIME,$BOOKING_DATE,$BOOKING_TIME,$BOOKING_REFERENCE,$SERVICE_NAME,$BUSINESS_NAME,$LOCATION_NAME,$LOCATION_PHONE,$BOOKING_END_DATE_TIME,$color);
+            $this->bookings_model->add_bookings($CLIENT_FIRST_NAME,$CLIENT_LAST_NAME,$STAFF_FIRST_NAME,$STAFF_LAST_NAME,$BOOKING_DATE_TIME,$BOOKING_DATE,$BOOKING_TIME,$BOOKING_REFERENCE,$SERVICE_NAME,$BUSINESS_NAME,$LOCATION_NAME,$LOCATION_PHONE,$BOOKING_END_DATE_TIME,$color,$CLIENT_MOBILE,$SERVICE_COST);
 
 
 

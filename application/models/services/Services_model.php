@@ -107,6 +107,34 @@ class Services_model extends CI_Model {
 
     }
 
+
+     //get the service name
+    public function get_service_cost($id)
+    {
+        $user_id = $this->session->userdata('userid');
+
+        $this->db->select('*');
+        $this->db->from('services');
+        $this->db->where('id', $id);
+        $this->db->where('user_id', $user_id);
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+
+        
+        
+        $fullname = "";
+        foreach ($query->result() as $row) 
+        {
+            $fullname =  $row->Retail_Price;
+        }
+        
+            
+        return $fullname;
+
+
+    }
+
     public function delete_services($id)
     {
         $user_id = $this->session->userdata('userid');

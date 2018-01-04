@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jan 03, 2018 at 09:59 PM
+-- Generation Time: Jan 04, 2018 at 03:53 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.5.18
 
@@ -88,15 +88,17 @@ CREATE TABLE `IGS_bookings` (
   `LOCATION_NAME` varchar(512) NOT NULL,
   `LOCATION_PHONE` varchar(512) NOT NULL,
   `BOOKING_END_DATE_TIME` varchar(512) NOT NULL,
-  `color` varchar(512) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  `color` varchar(512) NOT NULL,
+  `CLIENT_MOBILE` varchar(255) NOT NULL,
+  `SERVICE_COST` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_bookings`
 --
 
-INSERT INTO `IGS_bookings` (`id`, `user_id`, `CLIENT_FIRST_NAME`, `CLIENT_LAST_NAME`, `STAFF_FIRST_NAME`, `STAFF_LAST_NAME`, `BOOKING_DATE_TIME`, `BOOKING_DATE`, `BOOKING_TIME`, `BOOKING_REFERENCE`, `SERVICE_NAME`, `BUSINESS_NAME`, `LOCATION_NAME`, `LOCATION_PHONE`, `BOOKING_END_DATE_TIME`, `color`) VALUES
-(12, 4, 'Sara Smith', 'Sara Smith', 'karen', 'h', '2018-01-04T09:30:00', 'x', 'x', 'zoHRWUDV', 'Massage', 'x', 'x', 'x', '2018-01-04T10:00:00', 'green');
+INSERT INTO `IGS_bookings` (`id`, `user_id`, `CLIENT_FIRST_NAME`, `CLIENT_LAST_NAME`, `STAFF_FIRST_NAME`, `STAFF_LAST_NAME`, `BOOKING_DATE_TIME`, `BOOKING_DATE`, `BOOKING_TIME`, `BOOKING_REFERENCE`, `SERVICE_NAME`, `BUSINESS_NAME`, `LOCATION_NAME`, `LOCATION_PHONE`, `BOOKING_END_DATE_TIME`, `color`, `CLIENT_MOBILE`, `SERVICE_COST`) VALUES
+(20, 4, 'Joe Blogs', 'Joe Blogs', 'karen', 'h', '2018-01-05T11:00:00', '2018-01-05', '11:00:00', 'Pohcz64B', 'Manicure', 'Company Name', 'x', '01234567891', '2018-01-05T11:30:00', 'blue', '0123456789', '10.00');
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,15 @@ CREATE TABLE `IGS_clients` (
   `Email` varchar(512) NOT NULL,
   `Send_Notifications_by` varchar(255) NOT NULL,
   `Client_Notes` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `IGS_clients`
+--
+
+INSERT INTO `IGS_clients` (`id`, `user_id`, `First_Name`, `Last_Name`, `Mobile_Number`, `Email`, `Send_Notifications_by`, `Client_Notes`) VALUES
+(16, 4, 'Joe', 'Blogs', '0123456789', 'joe@mail.com', 'SMS', 'Client Notes'),
+(17, 4, 'Sara', 'Smith', '0123456711', 'sara@mail.com', 'SMS', 'Client Notes');
 
 -- --------------------------------------------------------
 
@@ -153,7 +163,14 @@ CREATE TABLE `IGS_company_details` (
   `Website` varchar(512) NOT NULL,
   `Mobile_Number` varchar(255) NOT NULL,
   `Business_Type` varchar(512) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `IGS_company_details`
+--
+
+INSERT INTO `IGS_company_details` (`id`, `user_id`, `Bussiness_Name`, `Description`, `Address`, `Website`, `Mobile_Number`, `Business_Type`) VALUES
+(9, 4, 'Company Name', 'Company Description', 'Company Address', 'http://www.company.com', '01234567891', 'Salon');
 
 -- --------------------------------------------------------
 
@@ -581,7 +598,15 @@ CREATE TABLE `IGS_services` (
   `Service_name` varchar(512) NOT NULL,
   `Duration` varchar(215) NOT NULL,
   `Retail_Price` varchar(215) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `IGS_services`
+--
+
+INSERT INTO `IGS_services` (`id`, `user_id`, `Service_name`, `Duration`, `Retail_Price`) VALUES
+(13, 4, 'Massage', '45 minutes', '25.00'),
+(14, 4, 'Manicure', '30 minutes', '10.00');
 
 -- --------------------------------------------------------
 
@@ -599,7 +624,14 @@ CREATE TABLE `IGS_setup` (
   `Send_by` varchar(512) NOT NULL,
   `Reminder_advance_notice` varchar(512) NOT NULL,
   `SMS_Template` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `IGS_setup`
+--
+
+INSERT INTO `IGS_setup` (`Reschedule_Template`, `Confirm_Template`, `Cancelled_Template`, `id`, `user_id`, `Enable_Notifications`, `Send_by`, `Reminder_advance_notice`, `SMS_Template`) VALUES
+('Hi CLIENT_FIRST_NAME,Your appointment with booking reference BOOKING_REFERENCE has been updated. Here are the new details:BUSINESS_NAME SERVICE_NAME BOOKING_DATE_TIME At this location: LOCATION_NAME LOCATION_PHONE Need to change your appointment? Please contact BUSINESS_NAME on LOCATION_PHONE.', 'Hi CLIENT_FIRST_NAME,Your new appointment with booking reference BOOKING_REFERENCE is confirmed. Here are the details:BUSINESS_NAME SERVICE_NAME BOOKING_DATE_TIME At this location: LOCATION_NAME LOCATION_PHONE Need to change your appointment? Please contact BUSINESS_NAME on LOCATION_PHONE.', 'Hi CLIENT_FIRST_NAME,Your appointment with booking reference BOOKING_REFERENCE was cancelled. Here are the details: BUSINESS_NAME SERVICE_NAME BOOKING_DATE_TIME At this location:LOCATION_NAME LOCATION_PHONE Need to get in touch? Please contact BUSINESS_NAME on LOCATION_PHONE.', 6, 4, 1, 'SMS', '1 hour', 'Hi CLIENT_FIRST_NAME, this is a friendly reminder about your appointment with BUSINESS_NAME on BOOKING_DATE_TIME, to cancel text LOCATION_PHONE.');
 
 -- --------------------------------------------------------
 
@@ -677,7 +709,7 @@ CREATE TABLE `IGS_user` (
 --
 
 INSERT INTO `IGS_user` (`id`, `name`, `password`, `joindate`, `logins`, `is_logged_in`, `isadmin`, `companyid`, `company`, `email`, `number`, `activ_status`, `activ_key`, `logo`, `about`, `credits`, `permissiongroup`, `fullname`) VALUES
-(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 55, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, ''),
+(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 57, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, ''),
 (5, 'sara', '$2y$10$NJ5AA9NEV9kTvAmPbCLq/.Kb5Fk6nsWN6Td1CKJ5.E7pAO5CKBO3K', '2018-01-02', 0, 0, 0, 0, '', 'sara@mail.com', '', 0, '', '', '', 0, 42, '');
 
 --
@@ -846,7 +878,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `IGS_bookings`
 --
 ALTER TABLE `IGS_bookings`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `IGS_cats`
 --
@@ -861,12 +893,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `IGS_clients`
 --
 ALTER TABLE `IGS_clients`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `IGS_company_details`
 --
 ALTER TABLE `IGS_company_details`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `IGS_content`
 --
@@ -926,12 +958,12 @@ MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=922;
 -- AUTO_INCREMENT for table `IGS_services`
 --
 ALTER TABLE `IGS_services`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `IGS_setup`
 --
 ALTER TABLE `IGS_setup`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `IGS_staff`
 --
