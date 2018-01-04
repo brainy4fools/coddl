@@ -30,6 +30,58 @@ class Calendar extends CI_Controller {
 
     }
 
+
+    //text anywhere test
+    public function send_text($message_name,$message,$recipient)
+    {
+
+
+        $user_id = $this->session->userdata('userid');
+
+         //do the swap for custom variables
+        // $message_name = 'coddl';
+        // $message = 'hi';
+        // $recipient = '';
+
+
+        $this->load->model('textanywhere/textanywhere_model');
+    
+        $external = $this->textanywhere_model->get_external('main');
+        $password = $this->textanywhere_model->get_password('main');
+
+        
+
+        //where the magic happens
+        include('text-messaging/nusoap.php');
+
+        $random = "";
+        $random .= rand(100000000, 999999999);
+        $unique_reference = substr($random,0,10);
+
+        $parameters = array( 
+            'returnCSVString' => 'false', 
+            'externalLogin' => $external, 
+            'password' => $password, 
+            'clientBillingReference' => 'coddl', // Identifies coddl SMS on TextAnywhere account statements
+            'clientMessageReference' => ''.$unique_reference.'', // Used to get delivery status, must be unique!
+            'originator' => ''.$message_name.'', 
+            'destinations' => ''.$recipient.'', 
+            'body' => ''.$message.'', 
+            'validity' => '72', 
+            'characterSetID' => '2', 
+            'replyMethodID' => '1', 
+            'replyData' => '', 
+            'statusNotificationUrl' => 'http://www.coddl.co.uk/resources/php/sms-updateStatus.php' // URL to send delivery status notifications to, important!
+        );  
+        $nusoapclient = new nusoapclient('http://www.textapp.net/webservice/service.asmx?wsdl'); 
+        $result = $nusoapclient->call('SendSMS',$parameters,'http://www.textapp.net/','http://www.textapp.net/SendSMS');
+
+
+    }
+
+
+
+
     //via ajax
     public function get_info()
     {
@@ -56,6 +108,8 @@ class Calendar extends CI_Controller {
 
 
     }
+
+    
 
 
 
@@ -89,7 +143,63 @@ class Calendar extends CI_Controller {
 
     public function cancel_event()
     {
-        $BOOKING_REFERENCE = $this->input->post('id');
+        $BOOKING_REFERENCE = trim($this->input->post('id'));
+
+        $this->load->model('bookings/bookings_model');
+        $query = $this->bookings_model->get_bookings_ref($BOOKING_REFERENCE);
+
+
+      $CLIENT_FIRST_NAME  = "";
+      $CLIENT_LAST_NAME  = "";
+      $STAFF_FIRST_NAME  = "";
+      $STAFF_LAST_NAME  = "";
+      $BOOKING_DATE_TIME  = "";
+      $BOOKING_DATE  = "";
+      $BOOKING_TIME  = "";
+      $BOOKING_REFERENCE  = "";
+      $SERVICE_NAME  = "";
+      $BUSINESS_NAME  = "";
+      $LOCATION_NAME  = "";
+      $LOCATION_PHONE  = "";
+      $BOOKING_END_DATE_TIME  = "";
+      $color  = "";
+      $CLIENT_MOBILE = "";
+
+
+       foreach ($query->result() as $key) 
+       {
+              $CLIENT_FIRST_NAME     =  $key->CLIENT_FIRST_NAME;
+              $CLIENT_LAST_NAME      =  $key->CLIENT_LAST_NAME;
+              $STAFF_FIRST_NAME      =  $key->STAFF_FIRST_NAME;
+              $STAFF_LAST_NAME       =  $key->STAFF_LAST_NAME;
+              $BOOKING_DATE_TIME     =  $key->BOOKING_DATE_TIME;
+              $BOOKING_DATE          =  $key->BOOKING_DATE;
+              $BOOKING_TIME          =  $key->BOOKING_TIME;
+              $BOOKING_REFERENCE     =  $key->BOOKING_REFERENCE;
+              $SERVICE_NAME          =  $key->SERVICE_NAME;
+              $BUSINESS_NAME         =  $key->BUSINESS_NAME;
+              $LOCATION_NAME         =  $key->LOCATION_NAME;
+              $LOCATION_PHONE        =  $key->LOCATION_PHONE;
+              $BOOKING_END_DATE_TIME =  $key->BOOKING_END_DATE_TIME;
+              $color                 =  $key->color;
+              $CLIENT_MOBILE         =  $key->CLIENT_MOBILE;
+
+       }
+                                   
+
+
+
+
+        //send text message
+       $message_name = 'Cancel';  //IMPORT MUST BE LESS THAN 10 CHARACTERS!
+        $message = "Hi $CLIENT_FIRST_NAME, your $SERVICE_NAME on $BOOKING_DATE  has been cancelled";
+        $recipient = $CLIENT_MOBILE;
+
+
+        $this->send_text($message_name,$message,$recipient);
+        
+        
+        
         $this->load->model('bookings/bookings_model');
             $this->bookings_model->cancel_bookings($BOOKING_REFERENCE);
 

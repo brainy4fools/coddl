@@ -87,6 +87,23 @@ class Bookings_model extends CI_Model {
 
     }
 
+
+    public function get_bookings_ref($BOOKING_REFERENCE)
+    {
+        $user_id = $this->session->userdata('userid');
+
+        $this->db->select('*');
+        $this->db->from('bookings');
+        $this->db->where('BOOKING_REFERENCE', $BOOKING_REFERENCE);
+        $this->db->where('user_id', $user_id);
+
+        $query = $this->db->get();
+            
+        return $query;
+
+
+    }
+
     public function delete_bookings($id)
     {
         $user_id = $this->session->userdata('userid');
