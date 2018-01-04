@@ -182,7 +182,8 @@
                 }
             });
 
-
+            //TODO tweak to  go back to last date used
+            location.reload();
 
        });
 
