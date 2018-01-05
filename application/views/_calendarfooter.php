@@ -118,7 +118,7 @@
 
                     <div class="col-sm-12">
                        
-                        <input type="text" name="n-ref" id="n-ref" value="" style=""/>
+                        <input type="text" name="n-ref" id="n-ref" value="" style="display:none;"/>
 
                        <button id='r-schedule' type="submit" class="btn btn-purplet btn-s-xs f"> <strong>Send Reschedule text</strong>
                         </button>
