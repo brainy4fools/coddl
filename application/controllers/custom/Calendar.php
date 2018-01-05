@@ -284,6 +284,73 @@ class Calendar extends CI_Controller {
     }
 
 
+    //send reschedule text
+    public function reschedule_event()
+    {
+        $BOOKING_REFERENCE = trim($this->input->post('id'));
+
+        $this->load->model('bookings/bookings_model');
+        $query = $this->bookings_model->get_bookings_ref($BOOKING_REFERENCE);
+
+
+      $CLIENT_FIRST_NAME  = "";
+      $CLIENT_LAST_NAME  = "";
+      $STAFF_FIRST_NAME  = "";
+      $STAFF_LAST_NAME  = "";
+      $BOOKING_DATE_TIME  = "";
+      $BOOKING_DATE  = "";
+      $BOOKING_TIME  = "";
+      $BOOKING_REFERENCE  = "";
+      $SERVICE_NAME  = "";
+      $BUSINESS_NAME  = "";
+      $LOCATION_NAME  = "";
+      $LOCATION_PHONE  = "";
+      $BOOKING_END_DATE_TIME  = "";
+      $color  = "";
+      $CLIENT_MOBILE = "";
+
+
+       foreach ($query->result() as $key) 
+       {
+              $CLIENT_FIRST_NAME     =  $key->CLIENT_FIRST_NAME;
+              $CLIENT_LAST_NAME      =  $key->CLIENT_LAST_NAME;
+              $STAFF_FIRST_NAME      =  $key->STAFF_FIRST_NAME;
+              $STAFF_LAST_NAME       =  $key->STAFF_LAST_NAME;
+              $BOOKING_DATE_TIME     =  $key->BOOKING_DATE_TIME;
+              $BOOKING_DATE          =  $key->BOOKING_DATE;
+              $BOOKING_TIME          =  $key->BOOKING_TIME;
+              $BOOKING_REFERENCE     =  $key->BOOKING_REFERENCE;
+              $SERVICE_NAME          =  $key->SERVICE_NAME;
+              $BUSINESS_NAME         =  $key->BUSINESS_NAME;
+              $LOCATION_NAME         =  $key->LOCATION_NAME;
+              $LOCATION_PHONE        =  $key->LOCATION_PHONE;
+              $BOOKING_END_DATE_TIME =  $key->BOOKING_END_DATE_TIME;
+              $color                 =  $key->color;
+              $CLIENT_MOBILE         =  $key->CLIENT_MOBILE;
+
+       }
+                                   
+
+
+
+
+        //send text message
+       $message_name = 'reschedule';  //IMPORT MUST BE LESS THAN 10 CHARACTERS!
+        $message = "Hi $CLIENT_FIRST_NAME,Your appointment with booking reference $BOOKING_REFERENCE has been updated. Here are the new details:$BUSINESS_NAME $SERVICE_NAME $BOOKING_DATE_TIME.  Need to change your appointment? Please contact $BUSINESS_NAME on $LOCATION_PHONE.";
+        $recipient = $CLIENT_MOBILE;
+
+
+        $this->send_text($message_name,$message,$recipient);
+
+
+
+
+
+
+
+
+    }
+
 
 
 	//quick and dirty ajax test to add event, title, add 15 minutes to current time and class and random id

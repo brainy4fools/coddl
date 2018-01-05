@@ -118,7 +118,7 @@
 
                     <div class="col-sm-12">
                        
-                       
+                        <input type="text" name="n-ref" id="n-ref" value="" style=""/>
 
                        <button id='r-schedule' type="submit" class="btn btn-purplet btn-s-xs f"> <strong>Send Reschedule text</strong>
                         </button>
@@ -285,21 +285,21 @@
         //reschedule button
         $('#r-schedule').click(function(){
 
-            //var id = $('#ref').val();
+            var id = $('#n-ref').val();
             //alert(id);
 
-             // $.ajax({
-             //    url: "<?php echo site_url('custom/calendar/reschedule_event'); ?>",
-             //    type: 'post',
-             //    data: {id:id},
-             //    dataType: 'text',
-             //    success: function (data) {
+             $.ajax({
+                url: "<?php echo site_url('custom/calendar/reschedule_event'); ?>",
+                type: 'post',
+                data: {id:id},
+                dataType: 'text',
+                success: function (data) {
                 
 
                 
 
-             //        }
-             //    });
+                    }
+                });
                 
                 $('#schedule-appointment').modal('hide');
 
@@ -409,6 +409,8 @@
                 var id = event.id;
                 var start = event.start.format();
                 var end = event.end.format();
+
+                $('#n-ref').val(id);
 
 
                 $.ajax({
