@@ -105,6 +105,36 @@
 </div>
 
 
+<!-- redschedule appointment dialog -->
+<div class="modal fade" id="schedule-appointment">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"> Reschedule Appointment</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                       
+                       
+
+                       <button id='r-schedule' type="submit" class="btn btn-purplet btn-s-xs f"> <strong>Send Reschedule text</strong>
+                        </button>
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
 
 
 
@@ -252,6 +282,30 @@
         });
 
 
+        //reschedule button
+        $('#r-schedule').click(function(){
+
+            //var id = $('#ref').val();
+            //alert(id);
+
+             // $.ajax({
+             //    url: "<?php echo site_url('custom/calendar/reschedule_event'); ?>",
+             //    type: 'post',
+             //    data: {id:id},
+             //    dataType: 'text',
+             //    success: function (data) {
+                
+
+                
+
+             //        }
+             //    });
+                
+                $('#schedule-appointment').modal('hide');
+
+        });
+
+
    
 
 
@@ -294,23 +348,11 @@
                 var id = calEvent.id;
                 $('#ref').val(id);
 
-                 // id: '
-                 // title: '
-                 // start: '
-                 // end: '
-                 // className:
-                 // mobile: '
-                 // cost: '
-                 // staff: '
 
 
-                $('#m-i').html(calEvent.staff + calEvent.id + calEvent.title + calEvent.mobile + calEvent.cost);
+                $('#m-i').html('<b>Ref:</b> ' + calEvent.id + '</br><b>Info:</b> ' + calEvent.title + '</br><b>Mobile:</b> '+ calEvent.mobile + '</br><b>Cost:</b> £'+ calEvent.cost + '</br><b>With:</b> '+calEvent.staff +'</br></br>');
 
                 $('#cancel-appointment').appendTo("body").modal('show');
-                
-                
-
-
                 
 
 
@@ -376,7 +418,7 @@
                 dataType: 'text',
                 success: function (data) {
                 
-                    alert('Send reschedule message?');
+                    $('#schedule-appointment').appendTo("body").modal('show');
             
 
                 }
