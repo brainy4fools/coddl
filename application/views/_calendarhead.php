@@ -160,7 +160,7 @@
 
 .nothing{
     
-    background-color: green !important;
+    background-color: #<?php echo $theme['eventcolor'];?> !important;
 
 }
 

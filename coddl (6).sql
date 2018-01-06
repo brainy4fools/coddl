@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jan 04, 2018 at 08:24 PM
+-- Generation Time: Jan 06, 2018 at 08:37 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.5.18
 
@@ -91,14 +91,7 @@ CREATE TABLE `IGS_bookings` (
   `color` varchar(512) NOT NULL,
   `CLIENT_MOBILE` varchar(255) NOT NULL,
   `SERVICE_COST` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `IGS_bookings`
---
-
-INSERT INTO `IGS_bookings` (`id`, `user_id`, `CLIENT_FIRST_NAME`, `CLIENT_LAST_NAME`, `STAFF_FIRST_NAME`, `STAFF_LAST_NAME`, `BOOKING_DATE_TIME`, `BOOKING_DATE`, `BOOKING_TIME`, `BOOKING_REFERENCE`, `SERVICE_NAME`, `BUSINESS_NAME`, `LOCATION_NAME`, `LOCATION_PHONE`, `BOOKING_END_DATE_TIME`, `color`, `CLIENT_MOBILE`, `SERVICE_COST`) VALUES
-(21, 4, 'Sara Smith', 'Sara Smith', 'karen', 'h', '2018-01-05T11:15:00', '2018-01-05', '11:15:00', 'iLwdAqZV', 'Massage', 'Company Name', 'x', '01234567891', '2018-01-05T11:45:00', 'blue', '0123456711', '25.00');
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -195,31 +188,32 @@ CREATE TABLE `IGS_content` (
   `imone` varchar(500) DEFAULT NULL,
   `footerlogo` varchar(500) DEFAULT NULL,
   `url` varchar(100) DEFAULT NULL,
-  `icon` text
+  `icon` text,
+  `eventcolor` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=221 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_content`
 --
 
-INSERT INTO `IGS_content` (`id`, `entryid`, `entrytitle`, `test`, `color`, `bgcolor`, `logo`, `name`, `boxcolor`, `logowidth`, `welcome`, `landing`, `fontcolor`, `imone`, `footerlogo`, `url`, `icon`) VALUES
-(204, 203, '', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(205, 204, '', NULL, 'D25C4A', 'EBEBEB', '198', NULL, 'BDBDBD', '238', 'Welcome to this CMS', NULL, '696969', NULL, '203', NULL, NULL),
-(206, 205, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(207, 206, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(208, 207, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(209, 208, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(210, 209, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(211, 210, 'Calender', NULL, NULL, NULL, NULL, 'Calender', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/custom/calendar/load_calendar', 'fa-calendar'),
-(212, 211, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '199', NULL, '201', NULL, NULL, NULL),
-(213, 212, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '201', NULL, NULL, NULL),
-(214, 213, 'Clients', NULL, NULL, NULL, NULL, 'Clients', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/clients', 'fa-user'),
-(215, 214, 'Staff', NULL, NULL, NULL, NULL, 'Staff', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/staff', NULL),
-(216, 215, 'Services', NULL, NULL, NULL, NULL, 'Services', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/services', 'fa-credit-card'),
-(217, 216, 'Setup', NULL, NULL, NULL, NULL, 'Setup', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/setup/edit_setup_view/1', 'fa-cog'),
-(218, 217, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(219, 218, 'Company Profile', NULL, NULL, NULL, NULL, 'Company Profile', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/company_details/edit_company_details_view/1', 'fa-unlock'),
-(220, 219, 'Logout', NULL, NULL, NULL, NULL, 'Logout', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/custom/cms_login/logout', 'fa-power-off');
+INSERT INTO `IGS_content` (`id`, `entryid`, `entrytitle`, `test`, `color`, `bgcolor`, `logo`, `name`, `boxcolor`, `logowidth`, `welcome`, `landing`, `fontcolor`, `imone`, `footerlogo`, `url`, `icon`, `eventcolor`) VALUES
+(204, 203, '', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(205, 204, '', NULL, 'D25C4A', 'EBEBEB', '198', NULL, 'BDBDBD', '238', 'Welcome to this CMS', NULL, '696969', NULL, '203', NULL, NULL, '72B37B'),
+(206, 205, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(207, 206, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(208, 207, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(209, 208, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(210, 209, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(211, 210, 'Calender', NULL, NULL, NULL, NULL, 'Calender', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/custom/calendar/load_calendar', 'fa-calendar', NULL),
+(212, 211, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '199', NULL, '201', NULL, NULL, NULL, NULL),
+(213, 212, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '201', NULL, NULL, NULL, NULL),
+(214, 213, 'Clients', NULL, NULL, NULL, NULL, 'Clients', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/clients', 'fa-user', NULL),
+(215, 214, 'Staff', NULL, NULL, NULL, NULL, 'Staff', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/staff', NULL, NULL),
+(216, 215, 'Services', NULL, NULL, NULL, NULL, 'Services', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/services', 'fa-credit-card', NULL),
+(217, 216, 'Setup', NULL, NULL, NULL, NULL, 'Setup', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/setup/edit_setup_view/1', 'fa-cog', NULL),
+(218, 217, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(219, 218, 'Company Profile', NULL, NULL, NULL, NULL, 'Company Profile', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/admin/company_details/edit_company_details_view/1', 'fa-unlock', NULL),
+(220, 219, 'Logout', NULL, NULL, NULL, NULL, 'Logout', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost:8888/coddl/index.php/custom/cms_login/logout', 'fa-power-off', NULL);
 
 -- --------------------------------------------------------
 
@@ -294,7 +288,7 @@ CREATE TABLE `IGS_fields` (
   `formvalidation` text NOT NULL,
   `settings` text NOT NULL,
 `id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=300 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=301 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_fields`
@@ -314,7 +308,8 @@ INSERT INTO `IGS_fields` (`name`, `type`, `opts`, `instructions`, `maxchars`, `l
 ('landing', 'file-upload', '', 'landing image', '', 1, 'jpg', '', 296),
 ('fontcolor', 'color', '', 'landing page font color', '', 0, 'min_length[1]', '', 297),
 ('imone', 'file-upload', '', '', '', 1, 'jpg', '', 298),
-('footerlogo', 'file-upload', '', '', '', 1, 'jpg', '', 299);
+('footerlogo', 'file-upload', '', '', '', 1, 'jpg', '', 299),
+('eventcolor', 'color', '', 'The event colour when selected', '', 0, 'min_length[1]', '', 300);
 
 -- --------------------------------------------------------
 
@@ -559,7 +554,7 @@ CREATE TABLE `IGS_section_layout` (
   `fieldid` int(11) NOT NULL,
   `sortorder` int(11) NOT NULL,
   `required` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=922 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=940 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_section_layout`
@@ -579,15 +574,16 @@ INSERT INTO `IGS_section_layout` (`s_id`, `sectionid`, `fieldid`, `sortorder`, `
 (909, 219, 298, 1, 0),
 (911, 220, 286, 0, 0),
 (912, 220, 298, 1, 0),
-(913, 212, 287, 0, 0),
-(914, 212, 288, 1, 0),
-(915, 212, 289, 2, 0),
-(916, 212, 294, 3, 0),
-(917, 212, 297, 4, 0),
-(918, 212, 292, 5, 0),
-(919, 212, 295, 6, 0),
-(920, 212, 299, 7, 0),
-(921, 221, 286, 0, 0);
+(921, 221, 286, 0, 0),
+(931, 212, 287, 0, 0),
+(932, 212, 288, 1, 0),
+(933, 212, 300, 2, 0),
+(934, 212, 289, 3, 0),
+(935, 212, 294, 4, 0),
+(936, 212, 297, 5, 0),
+(937, 212, 292, 6, 0),
+(938, 212, 295, 7, 0),
+(939, 212, 299, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -725,7 +721,7 @@ CREATE TABLE `IGS_user` (
 --
 
 INSERT INTO `IGS_user` (`id`, `name`, `password`, `joindate`, `logins`, `is_logged_in`, `isadmin`, `companyid`, `company`, `email`, `number`, `activ_status`, `activ_key`, `logo`, `about`, `credits`, `permissiongroup`, `fullname`) VALUES
-(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 60, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, ''),
+(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 68, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 0, 1, ''),
 (5, 'sara', '$2y$10$NJ5AA9NEV9kTvAmPbCLq/.Kb5Fk6nsWN6Td1CKJ5.E7pAO5CKBO3K', '2018-01-02', 0, 0, 0, 0, '', 'sara@mail.com', '', 0, '', '', '', 0, 42, '');
 
 --
@@ -900,7 +896,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `IGS_bookings`
 --
 ALTER TABLE `IGS_bookings`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=102;
 --
 -- AUTO_INCREMENT for table `IGS_cats`
 --
@@ -940,7 +936,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=220;
 -- AUTO_INCREMENT for table `IGS_fields`
 --
 ALTER TABLE `IGS_fields`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=300;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=301;
 --
 -- AUTO_INCREMENT for table `IGS_menu2`
 --
@@ -975,7 +971,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=222;
 -- AUTO_INCREMENT for table `IGS_section_layout`
 --
 ALTER TABLE `IGS_section_layout`
-MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=922;
+MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=940;
 --
 -- AUTO_INCREMENT for table `IGS_services`
 --
