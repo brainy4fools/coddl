@@ -105,7 +105,7 @@
     }
 
 
-    
+
 
     /* test to style individual events*/
     .blue{
@@ -133,11 +133,14 @@
         border-left: 4px solid #8D3193;
     }
 
+
+
+
 /*end full calendar styling*/
 
 
 /*styling for the add event*/
-.create-event{
+#create-event{
     
     width: 50px;
     height: 50px;
@@ -152,6 +155,13 @@
     position: fixed;
     right: 50px;
     bottom: 50px;
+}
+
+
+.nothing{
+    
+    background-color: green !important;
+
 }
 
 

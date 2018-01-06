@@ -387,8 +387,7 @@ class Calendar extends CI_Controller {
 
 	   $id = random_string('alnum', 8);
 
-       $result = array();
-       $result = array('title' => $title,'class'=>$class,'id'=>$id,'end'=>$endTime);
+       
 
 
        //now add to the bookings table
@@ -419,6 +418,10 @@ class Calendar extends CI_Controller {
        $LOCATION_PHONE = $this->company_details_model->get_bussiness_phone();
        $BOOKING_END_DATE_TIME = $endTime;
        $color = $class;
+
+
+       $result = array();
+       $result = array('title' => $title,'class'=>$class,'id'=>$id,'end'=>$endTime, 'mobile' => $CLIENT_MOBILE, 'cost' => $SERVICE_COST, 'staff' => $STAFF_FIRST_NAME);
 
 
        $this->load->model('bookings/bookings_model');

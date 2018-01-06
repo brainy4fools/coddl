@@ -148,15 +148,19 @@
     $(document).ready(function(event) {
 
 
-        var canClick = 0;
+        
 
         // create button clicked
-      $('.create-event').click(function()
+      $('#create-event').click(function()
       {
 
-        alert('create event button clicked');
-        canClick = 1;
+        $(this).toggleClass('nothing');
+        // $(this).toggle('val','3');
+        
       });
+
+
+      
 
 
        //submit modal
@@ -186,6 +190,9 @@
                     title: data.title,
                     start: date,
                     end: data.end,
+                    mobile: data.mobile,
+                    cost: data.cost,
+                    staff: data.staff,
                     className: data.class
                     
                 };
@@ -197,8 +204,10 @@
                 }
             });
 
+        $('#create-event').toggleClass('nothing');
+
             //TODO tweak to  go back to last date used
-            location.reload();
+            //location.reload();
 
        });
 
@@ -349,7 +358,7 @@
            
 
             dayClick: function(date, jsEvent, view) {
-                if(canClick == 1)
+                if($('#create-event').attr("class") == 'nothing')
                 {
                     if(view.name != 'month')
                     {

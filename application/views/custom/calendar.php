@@ -7,6 +7,6 @@
 
 
     </div>
-     <div class="create-event">+</div>
+     <div id="create-event">-</div>
 </body>
 <?php $this->load->view("_calendarfooter"); ?>
