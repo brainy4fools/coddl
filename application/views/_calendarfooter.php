@@ -92,7 +92,9 @@
                         <button id='c-confirm' type="submit" class="btn btn-purplet btn-s-xs f m-l"> <strong>Send Confirm text</strong>
                         </button>
 
-                        <button id='r-remove' type="submit" class="btn btn-purplet btn-s-xs f m-t"> <strong>Just remove</strong>
+                         <button id='r-schedule' type="submit" class="btn btn-purplet btn-s-xs f m-l"> <strong>Send Reschedule text</strong>
+
+                        <button id='r-remove' type="submit" class="btn btn-purplet btn-s-xs f m-l"> <strong>Just remove</strong>
                         </button>
 
                     </div>
@@ -105,34 +107,7 @@
 </div>
 
 
-<!-- redschedule appointment dialog -->
-<div class="modal fade" id="schedule-appointment">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title"> Reschedule Appointment</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-
-                    <div class="col-sm-12">
-                       
-                        <input type="text" name="n-ref" id="n-ref" value="" style="display:none;"/>
-
-                       <button id='r-schedule' type="submit" class="btn btn-purplet btn-s-xs f"> <strong>Send Reschedule text</strong>
-                        </button>
-
-                        
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
+ 
 
 
 
@@ -171,7 +146,17 @@
 
    
     $(document).ready(function(event) {
-      
+
+
+        var canClick = 0;
+
+        // create button clicked
+      $('.create-event').click(function()
+      {
+
+        alert('create event button clicked');
+        canClick = 1;
+      });
 
 
        //submit modal
@@ -301,7 +286,7 @@
                     }
                 });
                 
-                $('#schedule-appointment').modal('hide');
+                $('#cancel-appointment').modal('hide');
 
         });
 
@@ -345,14 +330,17 @@
              //test to delete
              eventClick: function(calEvent, jsEvent, view) {
                 
-                var id = calEvent.id;
-                $('#ref').val(id);
+                
+                    var id = calEvent.id;
+                    $('#ref').val(id);
 
 
 
-                $('#m-i').html('<b>Ref:</b> ' + calEvent.id + '</br><b>Info:</b> ' + calEvent.title + '</br><b>Mobile:</b> '+ calEvent.mobile + '</br><b>Cost:</b> £'+ calEvent.cost + '</br><b>With:</b> '+calEvent.staff +'</br></br>');
+                    $('#m-i').html('<b>Ref:</b> ' + calEvent.id + '</br><b>Info:</b> ' + calEvent.title + '</br><b>Mobile:</b> '+ calEvent.mobile + '</br><b>Cost:</b> £'+ calEvent.cost + '</br><b>With:</b> '+calEvent.staff +'</br></br>');
 
-                $('#cancel-appointment').appendTo("body").modal('show');
+                    $('#cancel-appointment').appendTo("body").modal('show');
+
+                
                 
 
 
@@ -361,11 +349,13 @@
            
 
             dayClick: function(date, jsEvent, view) {
-                
-                if(view.name != 'month')
+                if(canClick == 1)
                 {
-                    $('#time').val(date.format());
-                    $('#modal-form').appendTo("body").modal('show');
+                    if(view.name != 'month')
+                    {
+                        $('#time').val(date.format());
+                        $('#modal-form').appendTo("body").modal('show');
+                    }
                 }
 
 
@@ -377,13 +367,13 @@
             allDaySlot: false,
             nowIndicator: true,
             slotDuration: '00:15',
-            firstDay: 1,
+            firstDay: 1, //monday
             defaultView: 'agendaWeek',
             minTime: "08:00",
             maxTime: "18:00",
             eventOverlap: false,
             navLinks: true, // can click day/week names to navigate views
-            selectable: true,
+            selectable: false,
             selectHelper: true,
             editable: true,
             eventLimit: true, // allow "more" link when too many events
@@ -420,7 +410,7 @@
                 dataType: 'text',
                 success: function (data) {
                 
-                    $('#schedule-appointment').appendTo("body").modal('show');
+                    //$('#schedule-appointment').appendTo("body").modal('show');
             
 
                 }

@@ -73,6 +73,10 @@
 .fc-widget-header {
         background-color: #fff;
     }
+
+    .fc-axis{
+        background-color: #fff;
+    }
     .fc-agendaWeek-view tr {
         height: 30px;
     }
@@ -100,6 +104,8 @@
         border-radius: 5px;
     }
 
+
+    
 
     /* test to style individual events*/
     .blue{
