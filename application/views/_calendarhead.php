@@ -130,6 +130,27 @@
 /*end full calendar styling*/
 
 
+/*styling for the add event*/
+.create-event{
+    
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 30px;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #<?php echo $theme['color']; ?>;
+    z-index: 9999999;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+}
+
+
+
+
 /*for the datatable pagination*/
     
     .paginate_disabled_previous {
