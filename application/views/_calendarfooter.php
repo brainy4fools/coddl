@@ -92,9 +92,9 @@
                         <button id='c-confirm' type="submit" class="btn btn-purplet btn-s-xs f m-l"> <strong>Send Confirm text</strong>
                         </button>
 
-                         <button id='r-schedule' type="submit" class="btn btn-purplet btn-s-xs f m-l"> <strong>Send Reschedule text</strong>
+                         <button id='r-schedule' type="submit" class="btn btn-purplet btn-s-xs f m-t"> <strong>Send Reschedule text</strong>
 
-                        <button id='r-remove' type="submit" class="btn btn-purplet btn-s-xs f m-l"> <strong>Just remove</strong>
+                        <button id='r-remove' type="submit" class="btn btn-purplet btn-s-xs f m-l m-t"> <strong>Just remove</strong>
                         </button>
 
                     </div>
