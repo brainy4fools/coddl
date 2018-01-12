@@ -165,6 +165,11 @@ class Calendar extends CI_Controller {
         $this->load->model('bookings/bookings_model');
             $this->bookings_model->cancel_bookings($BOOKING_REFERENCE);
 
+        $this->load->model('textanywhere/textanywhere_model');
+       $this->textanywhere_model->add_credit();
+       $credits = $this->textanywhere_model->get_credits();
+       echo $credits;
+
     }
 
 
@@ -223,12 +228,19 @@ class Calendar extends CI_Controller {
         $recipient = $CLIENT_MOBILE;
 
 
+
         $this->send_text($message_name,$message,$recipient);
         
         
         
         $this->load->model('bookings/bookings_model');
             $this->bookings_model->cancel_bookings($BOOKING_REFERENCE);
+
+
+         $this->load->model('textanywhere/textanywhere_model');
+       $this->textanywhere_model->use_credit();
+       $credits = $this->textanywhere_model->get_credits();
+       echo $credits;
 
     }
 
@@ -290,7 +302,10 @@ class Calendar extends CI_Controller {
 
         $this->send_text($message_name,$message,$recipient);
         
-        
+        $this->load->model('textanywhere/textanywhere_model');
+       $this->textanywhere_model->use_credit();
+       $credits = $this->textanywhere_model->get_credits();
+       echo $credits;
         
         
 
@@ -356,7 +371,10 @@ class Calendar extends CI_Controller {
         $this->send_text($message_name,$message,$recipient);
 
 
-
+        $this->load->model('textanywhere/textanywhere_model');
+       $this->textanywhere_model->use_credit();
+       $credits = $this->textanywhere_model->get_credits();
+       echo $credits;
 
 
 

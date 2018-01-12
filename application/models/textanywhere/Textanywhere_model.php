@@ -83,6 +83,20 @@ class Textanywhere_model extends CI_Model {
     }
 
 
+    public function add_credit()
+    {
+        if ($this->check_credits()) 
+        {
+            $user_id = $this->session->userdata('userid');
+
+            $this->db->set('credits', 'credits+1', FALSE);
+            $this->db->where('id', $user_id);
+            $this->db->update('user');
+
+        }
+    }
+
+
 
     public function get_all()
 	{

@@ -247,7 +247,7 @@
                 success: function (data) {
                 
 
-                
+                    $('#credits').html("Credits: "+data);
 
                     }
                 });
@@ -267,7 +267,7 @@
                 dataType: 'text',
                 success: function (data) {
                 
-
+                     $('#credits').html("Credits: "+data);
                 
 
                     }
@@ -288,7 +288,7 @@
                 dataType: 'text',
                 success: function (data) {
                 
-
+                        $('#credits').html("Credits: "+data);
                 
 
                     }
@@ -312,7 +312,7 @@
                 dataType: 'text',
                 success: function (data) {
                 
-
+                    $('#credits').html("Credits: "+data);
                 
 
                     }
