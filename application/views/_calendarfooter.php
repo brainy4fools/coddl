@@ -144,10 +144,32 @@
  <script type="text/javascript">
 
 
+    $( window ).on( "load", function() {
+        
+        
+    var id = 'x';
+    
+
+     $.ajax({
+        url: "<?php echo site_url('custom/calendar/get_credits'); ?>",
+        type: 'post',
+        data: {id:id},
+        dataType: 'text',
+        success: function (data) {
+             $('#credits').html('Credits:'+data);
+
+            }
+        }); 
+        
+               
+    });
    
     $(document).ready(function(event) {
 
 
+       
+        
+    
         
 
         // create button clicked

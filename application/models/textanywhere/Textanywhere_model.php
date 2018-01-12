@@ -2,7 +2,32 @@
 
 class Textanywhere_model extends CI_Model {
 
-	public function get_all()
+	
+
+    //get the user text credits
+    public function get_credits()
+    {
+
+        $user_id = $this->session->userdata('userid');
+        $this->db->select('credits');
+        $this->db->from('user');
+        $this->db->where('id', $user_id);
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+        
+        $credits = "";
+        foreach ($query->result() as $row) 
+        {
+            $credits =  $row->credits;
+        }
+        return $credits; 
+
+    }
+
+
+
+    public function get_all()
 	{
 		$this->db->select('*');
 		$this->db->from('textanywhere');

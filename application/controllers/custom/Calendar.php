@@ -31,6 +31,19 @@ class Calendar extends CI_Controller {
     }
 
 
+    //via ajax
+    public function get_credits()
+    {
+
+        $this->load->model('textanywhere/textanywhere_model');
+        $credits = $this->textanywhere_model->get_credits();
+
+        echo $credits;
+
+    }
+
+
+
     //text anywhere test
     public function send_text($message_name,$message,$recipient)
     {

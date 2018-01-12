@@ -4,8 +4,8 @@
 
     <div class="row" >
 
-       
-      <div id="credits" class='pull-right'>Credits:  <?php echo $this->session->userdata('credits'); ?></div>
+
+      <div id="credits" class='pull-right'></div>
     </div>
     <div id='calendar'>
 
