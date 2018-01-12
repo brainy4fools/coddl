@@ -222,6 +222,7 @@
                 $('#calendar').fullCalendar('unselect');
                 $('#modal-form').modal('hide');
                 $('#title').val("");
+                $('#credits').html("Credits: "+data.credits);
 
                 }
             });

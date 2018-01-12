@@ -25,6 +25,63 @@ class Textanywhere_model extends CI_Model {
 
     }
 
+      /**
+      *  @Description: check if logged user has enough credits
+      *       @Params: params
+      *
+      *       @returns: true or false
+      */
+
+    public function check_credits()
+    {
+
+        //get the text credits
+
+        $user_id = $this->session->userdata('userid');
+
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('id', $user_id);
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+        
+        $credits = 0;
+        
+        foreach ($query->result() as $row) 
+        {
+            $credits =  $row->credits;
+            
+        }
+
+        if ($credits > 0) 
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+        
+    }
+
+
+
+    //use text credit either schedule,confirm,cancel reschedule
+    public function use_credit()
+    {
+        if ($this->check_credits()) 
+        {
+            $user_id = $this->session->userdata('userid');
+
+            $this->db->set('credits', 'credits-1', FALSE);
+            $this->db->where('id', $user_id);
+            $this->db->update('user');
+
+        }
+    }
+
 
 
     public function get_all()

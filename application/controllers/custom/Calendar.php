@@ -433,8 +433,13 @@ class Calendar extends CI_Controller {
        $color = $class;
 
 
+       $this->load->model('textanywhere/textanywhere_model');
+       $this->textanywhere_model->use_credit();
+       $credits = $this->textanywhere_model->get_credits();
+
+
        $result = array();
-       $result = array('title' => $title,'class'=>$class,'id'=>$id,'end'=>$endTime, 'mobile' => $CLIENT_MOBILE, 'cost' => $SERVICE_COST, 'staff' => $STAFF_FIRST_NAME);
+       $result = array('title' => $title,'class'=>$class,'id'=>$id,'end'=>$endTime, 'mobile' => $CLIENT_MOBILE, 'cost' => $SERVICE_COST, 'staff' => $STAFF_FIRST_NAME, 'credits' => $credits);
 
 
        $this->load->model('bookings/bookings_model');
