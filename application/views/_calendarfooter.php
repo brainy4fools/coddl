@@ -158,6 +158,11 @@
         success: function (data) {
              $('#credits').html('Credits:'+data);
 
+             if(data === '0')
+             {
+                window.location.replace("<?php echo site_url('buymore'); ?>");
+             }
+
             }
         }); 
         

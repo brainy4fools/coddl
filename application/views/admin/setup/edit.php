@@ -38,7 +38,7 @@
     <select name="Enable_Notifications" id="" class='form-control f'>
 
         <option value="1" <?php if($key->Enable_Notifications == '1') echo "selected='selected'"; ?> >Yes</option>
-        <option value="0" <?php if($key->Enable_Notifications == '0') echo "selected='selected'"; ?> >No</option>
+        <!-- <option value="0" <?php if($key->Enable_Notifications == '0') echo "selected='selected'"; ?> >No</option> -->
 
        
     </select>
@@ -53,11 +53,11 @@
     <label>Send by</label>  
     <div class="igs-small"></div>
 
-    <select name="Send_by" id="" class='form-control f'>
+    <select name="Send_by" id="" class='form-control f' >
         
 
         <option value="SMS" <?php if($key->Send_by == 'SMS') echo "selected='selected'"; ?> >SMS</option>
-        <option value="SMS and Email" <?php if($key->Send_by == 'SMS and Email') echo "selected='selected'"; ?> >SMS and Email</option>
+        <!-- <option value="SMS and Email" <?php if($key->Send_by == 'SMS and Email') echo "selected='selected'"; ?> >SMS and Email</option> -->
        
     </select>
     
