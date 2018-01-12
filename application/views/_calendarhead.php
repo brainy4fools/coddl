@@ -139,6 +139,24 @@
 /*end full calendar styling*/
 
 
+/*credits button styling*/
+#credits
+{
+   position: relative;
+   
+   margin-right: 20px;
+   margin-bottom: 20px;
+   padding: 8px;
+   background-color: #<?php echo $theme['color']; ?>;
+   color: #ffffff;
+   font-size: 20px;
+   font-weight: bold;
+   box-shadow: 0px 4px 11.05px 1.95px rgba(0, 0, 0, 0.17);
+
+}
+
+
+
 /*styling for the add event*/
 #create-event{
     

@@ -22,6 +22,47 @@ class Cms_login extends CI_Controller {
     }
 
 
+    //the return function from textanywhere
+    public function sms_update_status()
+    {
+        $message_status = $_GET['messagestatuscode'];
+        $message_reference = $_GET['clientmessagereference'];
+
+        if($message_status == "400") { $status_desc = "Delivered to handset"; }
+        elseif($message_status == "500") { $status_desc = "Delivery failure - Age verification"; }
+        elseif($message_status == "501") { $status_desc = "Delivery failure - Billing issue"; }
+        elseif($message_status == "502") { $status_desc = "Delivery failure - Error from operator"; }
+        elseif($message_status == "503") { $status_desc = "Delivery failure - Expiration time exceeded"; }
+        elseif($message_status == "504") { $status_desc = "Delivery failure - Invalid number"; }
+        elseif($message_status == "505") { $status_desc = "Delivery failure - Message content"; }
+        elseif($message_status == "506") { $status_desc = "Delivery failure - Message is spam"; }
+        elseif($message_status == "507") { $status_desc = "Delivery failure - No credit on phone"; }
+        elseif($message_status == "508") { $status_desc = "Delivery failure - Parental content bar"; }
+        elseif($message_status == "509") { $status_desc = "Delivery failure - Problem with handsets operator"; }
+        elseif($message_status == "510") { $status_desc = "Delivery failure - Problem with phone"; }
+        elseif($message_status == "511") { $status_desc = "Delivery failure - Reason unknown"; }
+        elseif($message_status == "512") { $status_desc = "Delivery failure - Temporary problem locating handset"; }
+        elseif($message_status == "513") { $status_desc = "Message rejected by network"; }
+        elseif($message_status == "514") { $status_desc = "No delivery confirmation available"; }
+        elseif($message_status == "515") { $status_desc = "Destination Opted-out"; }
+        elseif($message_status == "600") { $status_desc = "Delivered to network"; }
+        elseif($message_status == "601") { $status_desc = "Sending"; }
+        elseif($message_status == "602") { $status_desc = "Sent to network"; }
+        elseif($message_status == "603") { $status_desc = "Message in transit and being retried"; }
+        else { $status_desc = "Status code unknown"; }
+
+        $m_now = date('Y-m-d H:i:s');
+
+        echo $m_now;
+
+        $object = array('status_code' => $message_status, 'status_desc' => $status_desc , 'status_update' => $m_now);
+
+        $this->db->where('unique_reference', $message_reference);
+        $this->db->update('sms_sent', $object);
+
+
+    }
+
     
 
 
@@ -305,11 +346,13 @@ class Cms_login extends CI_Controller {
 
               $hashed_password = "";
               $userid = "";
+              $credits = "";
               foreach ($query->result() as $row)
               {
 
                   $hashed_password = $row->password;
                   $userid = $row->id;
+                  $credits = $row->credits;
               }
 
               if (password_verify($password, $hashed_password))
@@ -326,7 +369,8 @@ class Cms_login extends CI_Controller {
                         'name' => $name,
                         'userid' => $userid,
                         'isloggedin' => '1',
-                        'permissions' => $perms
+                        'permissions' => $perms,
+                        'credits'=> $credits
                         
 
                       );
