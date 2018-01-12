@@ -307,7 +307,7 @@
         //reschedule button
         $('#r-schedule').click(function(){
 
-            var id = $('#n-ref').val();
+            var id = $('#ref').val();
             //alert(id);
 
              $.ajax({
