@@ -37,10 +37,7 @@
                           
                         </div>
                         <div class="col-sm-2">
-                            <!-- <a href="<?php echo site_url('admin/sent/new_sent_view'); ?>">
-                                <button type="submit" class="btn btn-purplet btn-s-xs pull-right f" id="">
-                                <i class="fa fa-plus"></i> <strong>New sent</strong></button>
-                            </a> -->
+                           
                         </div>
                     </div>
                     
@@ -50,33 +47,39 @@
                             <thead>
 
                                 <tr>
+                                    <th class="" width="">Sent On</th>
+                                    <th class="" width="">Staff Name</th>
                                     
-                                    <th class="" width="">Message Name</th>
 <th class="" width="">Message</th>
 <th class="" width="">Destination</th>
-<th class="" width="">Sent On</th>
 
 
-<th class="" width="">Status Code</th>
+
+
 
 <th class="" width="">Booking Reference</th>
-<th class="" width="">Staff Name</th>
+
+<th class="" width="">Message Name</th>
+<th class="" width="">Status Code</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($query->result() as $key): ?>
                                 <tr>
-                                   
-                                    <td><?php echo $key->message_name ?></td>
-<td><?php echo $key->message ?></td>
+                                   <td><?php echo my_pretty_date($key->sent_on) ?></td>
+                                   <td><?php echo $key->staff_name ?></td>
+                                    
+<td><?php echo word_limiter($key->message,5); ?></td>
 <td><?php echo $key->recipient ?></td>
-<td><?php echo $key->sent_on ?></td>
 
-<td><?php echo $key->status_code ?></td>
+
+
 
 <td><?php echo $key->booking_reference ?></td>
-<td><?php echo $key->staff_name ?></td>
+
+<td><?php echo $key->message_name ?></td>
+<td><label class="label bg-success m-l-xs"><strong>Sent</strong></label></td>
 
                                    
                                 </tr>
