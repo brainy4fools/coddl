@@ -229,7 +229,16 @@ class Calendar extends CI_Controller {
 
 
 
+
         $this->send_text($message_name,$message,$recipient);
+
+
+        //add to sent textes database
+
+        $this->load->model('sent/sent_model');
+        $this->sent_model->add_sent('Your appointment was cancelled',$message,$recipient,'sent_on','1','unique_reference','600','status_desc','status_update',$BOOKING_REFERENCE,$STAFF_FIRST_NAME);
+
+
         
         
         
@@ -301,6 +310,15 @@ class Calendar extends CI_Controller {
 
 
         $this->send_text($message_name,$message,$recipient);
+
+
+        //add to sent textes database
+
+        $this->load->model('sent/sent_model');
+        $this->sent_model->add_sent('Your appointment is confirmed',$message,$recipient,'sent_on','1','unique_reference','600','status_desc','status_update',$BOOKING_REFERENCE,$STAFF_FIRST_NAME);
+
+
+
         
         $this->load->model('textanywhere/textanywhere_model');
        $this->textanywhere_model->use_credit();
@@ -369,6 +387,12 @@ class Calendar extends CI_Controller {
 
 
         $this->send_text($message_name,$message,$recipient);
+
+        //add to sent textes database
+
+        $this->load->model('sent/sent_model');
+        $this->sent_model->add_sent('Your appointment was resheduled',$message,$recipient,'sent_on','1','unique_reference','600','status_desc','status_update',$BOOKING_REFERENCE,$STAFF_FIRST_NAME);
+
 
 
         $this->load->model('textanywhere/textanywhere_model');
