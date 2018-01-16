@@ -17,7 +17,7 @@ $time = date('H');
 
 
 
-$query = " SELECT * FROM IGS_bookings WHERE BOOKING_DATE = '$todays_date' AND BOOKING_TIME = '$time'";
+$query = " SELECT * FROM IGS_bookings WHERE BOOKING_DATE = '$todays_date' AND BOOKING_TIME = '$time' AND schedul = 0";
 $the_result = mysql_query($query) or die('Error, query failed');
 while($r = mysql_fetch_array($the_result)) { 
     
@@ -31,8 +31,8 @@ while($r = mysql_fetch_array($the_result)) {
     $staff_name = $r['STAFF_FIRST_NAME'];
     //$customer_ref = $r['customer_ref'];
     
-    $from = "Reminder";
-    $message = $r['SERVICE_NAME'];
+    $from = "Coddl";
+    $message = $r['SERVICE_NAME']; //todo
     
     // Generate Unique Ref to replace stupid idea of using time()
     // Make 10 chars long for asthetic reasons
@@ -56,10 +56,13 @@ while($r = mysql_fetch_array($the_result)) {
         'statusNotificationUrl' => 'http://rmdweb.co.uk/coddl/index.php/custom/cms_login/sms_update_status' // URL to send delivery status notifications to, important!
     );  
     $nusoapclient = new nusoapclient('http://www.textapp.net/webservice/service.asmx?wsdl'); 
-   // $result = $nusoapclient->call('SendSMS',$parameters,'http://www.textapp.net/','http://www.textapp.net/SendSMS');
+    $result = $nusoapclient->call('SendSMS',$parameters,'http://www.textapp.net/','http://www.textapp.net/SendSMS');
     
     $ent_message = htmlspecialchars($message, ENT_QUOTES);
     $sent_on = date('Y-m-d H:i:s');
+
+    //set schedul flag to one so we don't repeat send the text message!
+    mysql_query("UPDATE `IGS_bookings` SET `schedul` = 1 WHERE id = $id");
 
 
     mysql_query("INSERT INTO `IGS_sent`(`id`, `user_id`, `message_name`, `message`, `recipient`, `sent_on`, `type`, `unique_reference`, `status_code`, `status_desc`, `status_update`, `booking_reference`, `staff_name`) VALUES ('NULL','$user_id','$message_name','$message','$send_to','$sent_on','','$unique_reference','600','','','$booking_reference','$staff_name')")or die(mysql_error());
