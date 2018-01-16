@@ -53,12 +53,12 @@ class Cms_login extends CI_Controller {
 
         $m_now = date('Y-m-d H:i:s');
 
-        echo $m_now;
+        //echo $m_now;
 
         $object = array('status_code' => $message_status, 'status_desc' => $status_desc , 'status_update' => $m_now);
 
         $this->db->where('unique_reference', $message_reference);
-        $this->db->update('sms_sent', $object);
+        $this->db->update('sent', $object);
 
 
     }

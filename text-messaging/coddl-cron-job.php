@@ -1,7 +1,7 @@
 <?php
 //for the new motopromote responsive website
 
-mysql_connect('localhost', 'coddl', 'dbpassword');
+mysql_connect('localhost', 'root', 'root');
 mysql_select_db('coddl');    
 date_default_timezone_set('Europe/London');
 
@@ -56,7 +56,7 @@ while($r = mysql_fetch_array($the_result)) {
         'statusNotificationUrl' => 'http://rmdweb.co.uk/coddl/index.php/custom/cms_login/sms_update_status' // URL to send delivery status notifications to, important!
     );  
     $nusoapclient = new nusoapclient('http://www.textapp.net/webservice/service.asmx?wsdl'); 
-    $result = $nusoapclient->call('SendSMS',$parameters,'http://www.textapp.net/','http://www.textapp.net/SendSMS');
+   // $result = $nusoapclient->call('SendSMS',$parameters,'http://www.textapp.net/','http://www.textapp.net/SendSMS');
     
     $ent_message = htmlspecialchars($message, ENT_QUOTES);
     $sent_on = date('Y-m-d H:i:s');
