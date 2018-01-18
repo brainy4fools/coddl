@@ -65,9 +65,21 @@ class Bookings_model extends CI_Model {
     public function move_bookings($BOOKING_REFERENCE,$BOOKING_DATE_TIME,$BOOKING_END_DATE_TIME)
     {
 
+        $pt = explode("T", $BOOKING_DATE_TIME);
+        $p = explode(":", $pt[1]);
+
+        $BOOKING_TIME = $pt[1];
+
+        $sms_delay = 1; //delay in hours
+
+
+        $schedul_hour = $p[0] - $sms_delay;  //eg 11:45:00
+
+
+
         $user_id = $this->session->userdata('userid');
         $object = array(
-            'BOOKING_DATE_TIME'=>$BOOKING_DATE_TIME,'BOOKING_END_DATE_TIME'=>$BOOKING_END_DATE_TIME
+            'BOOKING_DATE_TIME'=>$BOOKING_DATE_TIME,'BOOKING_END_DATE_TIME'=>$BOOKING_END_DATE_TIME,'schedul_hour'=>$schedul_hour, 'BOOKING_TIME' => $BOOKING_TIME
 
 
             );
