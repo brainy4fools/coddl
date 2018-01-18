@@ -486,7 +486,7 @@ class Calendar extends CI_Controller {
        $STAFF_LAST_NAME = 'h';
        $BOOKING_DATE_TIME = $date;
        $BOOKING_DATE = $arr[0];
-       $BOOKING_TIME = $time;//$arr[1];
+       $BOOKING_TIME = $arr[1];
        $BOOKING_REFERENCE = $id;
        $SERVICE_NAME = $service;
 

@@ -20,10 +20,21 @@ class Bookings_model extends CI_Model {
     public function add_bookings($CLIENT_FIRST_NAME,$CLIENT_LAST_NAME,$STAFF_FIRST_NAME,$STAFF_LAST_NAME,$BOOKING_DATE_TIME,$BOOKING_DATE,$BOOKING_TIME,$BOOKING_REFERENCE,$SERVICE_NAME,$BUSINESS_NAME,$LOCATION_NAME,$LOCATION_PHONE,$BOOKING_END_DATE_TIME,$color,$CLIENT_MOBILE,$SERVICE_COST)
     {
     	
+        //effort to get the schedul_hour working
+
+        $p = explode(":", $BOOKING_TIME);
+
+        $sms_delay = 1; //delay in hours
+
+
+        $schedul_hour = $p[0] - $sms_delay;  //eg 11:45:00
+
+
+
         $user_id = $this->session->userdata('userid');
         $object = array(
     		'user_id'=>$user_id,'CLIENT_FIRST_NAME'=>$CLIENT_FIRST_NAME,'CLIENT_LAST_NAME'=>$CLIENT_LAST_NAME,'STAFF_FIRST_NAME'=>$STAFF_FIRST_NAME,'STAFF_LAST_NAME'=>$STAFF_LAST_NAME,'BOOKING_DATE_TIME'=>$BOOKING_DATE_TIME,'BOOKING_DATE'=>$BOOKING_DATE,'BOOKING_TIME'=>$BOOKING_TIME,'BOOKING_REFERENCE'=>$BOOKING_REFERENCE,'SERVICE_NAME'=>$SERVICE_NAME,'BUSINESS_NAME'=>$BUSINESS_NAME,'LOCATION_NAME'=>$LOCATION_NAME,'LOCATION_PHONE'=>$LOCATION_PHONE,'BOOKING_END_DATE_TIME'=>$BOOKING_END_DATE_TIME,'color'=>$color,
-            'CLIENT_MOBILE' => $CLIENT_MOBILE, 'SERVICE_COST' => $SERVICE_COST
+            'CLIENT_MOBILE' => $CLIENT_MOBILE, 'SERVICE_COST' => $SERVICE_COST, 'schedul_hour' =>$schedul_hour
 
 
     		);
