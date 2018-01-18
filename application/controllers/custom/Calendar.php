@@ -2,7 +2,26 @@
 
 class Calendar extends CI_Controller {
 
-	public function index()
+    public function __construct()
+    {
+	
+        parent::__construct();
+        {
+            if($this->session->userdata('isloggedin')=='1')
+            {
+                
+            }
+            else
+            {
+                redirect('Log-in','refresh');
+            }
+        }
+    }
+
+
+
+
+    public function index()
 	{
 		
 	}
