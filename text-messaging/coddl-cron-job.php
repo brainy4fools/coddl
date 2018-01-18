@@ -32,7 +32,30 @@ while($r = mysql_fetch_array($the_result)) {
     //$customer_ref = $r['customer_ref'];
     
     $from = "Coddl";
-    $message = $r['SERVICE_NAME']; //todo
+
+
+
+    $CLIENT_FIRST_NAME      = $r['CLIENT_FIRST_NAME'];
+    $CLIENT_LAST_NAME       = $r['CLIENT_LAST_NAME'];
+    $STAFF_FIRST_NAME       = $r['STAFF_FIRST_NAME'];
+    $STAFF_LAST_NAME        = $r['STAFF_LAST_NAME'];
+    $BOOKING_DATE_TIME      = $r['BOOKING_DATE_TIME'];
+    $BOOKING_DATE           = $r['BOOKING_DATE'];
+    $BOOKING_TIME           = $r['BOOKING_TIME'];
+    $BOOKING_REFERENCE      = $r['BOOKING_REFERENCE'];
+    $SERVICE_NAME           = $r['SERVICE_NAME'];
+    $BUSINESS_NAME          = $r['BUSINESS_NAME'];
+    $LOCATION_NAME          = $r['LOCATION_NAME'];
+    $LOCATION_PHONE         = $r['LOCATION_PHONE'];
+    $BOOKING_END_DATE_TIME  = $r['BOOKING_END_DATE_TIME'];
+    $color                  = $r['color'];
+    $CLIENT_MOBILE          = $r['CLIENT_MOBILE'];
+
+
+    $message = "Hi $CLIENT_FIRST_NAME, this is a friendly reminder your appointment with booking reference $BOOKING_REFERENCE. Here are the details:$BUSINESS_NAME $SERVICE_NAME $BOOKING_DATE_TIME. Need to change your appointment? Please contact $BUSINESS_NAME on $LOCATION_PHONE.";
+
+
+    //message now done
     
     // Generate Unique Ref to replace stupid idea of using time()
     // Make 10 chars long for asthetic reasons
