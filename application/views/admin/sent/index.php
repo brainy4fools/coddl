@@ -79,7 +79,7 @@
 <td><?php echo $key->booking_reference ?></td>
 
 <td><?php echo $key->message_name ?></td>
-<td><label class="label bg-success m-l-xs"><strong>Sent</strong></label></td>
+<td><label class="label bg-success m-l-xs"><strong><?php echo $key->status_code ?></strong></label></td>
 
                                    
                                 </tr>
