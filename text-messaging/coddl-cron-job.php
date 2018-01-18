@@ -17,7 +17,7 @@ $time = date('H');
 
 
 
-$query = " SELECT * FROM IGS_bookings WHERE BOOKING_DATE = '$todays_date' AND BOOKING_TIME = '$time' AND schedul = 0";
+$query = " SELECT * FROM IGS_bookings WHERE BOOKING_DATE = '$todays_date' AND schedul_hour = '$time' AND schedul = 0";
 $the_result = mysql_query($query) or die('Error, query failed');
 while($r = mysql_fetch_array($the_result)) { 
     
