@@ -103,7 +103,7 @@ class Calendar extends CI_Controller {
             'characterSetID' => '2', 
             'replyMethodID' => '1', 
             'replyData' => '', 
-            'statusNotificationUrl' => 'http://www.coddl.co.uk/resources/php/sms-updateStatus.php' // URL to send delivery status notifications to, important!
+            'statusNotificationUrl' => 'http://rmdweb.co.uk/coddl/index.php/custom/cms_login/sms_update_status' // URL to send delivery status notifications to, important!
         );  
         $nusoapclient = new nusoapclient('http://www.textapp.net/webservice/service.asmx?wsdl'); 
         $result = $nusoapclient->call('SendSMS',$parameters,'http://www.textapp.net/','http://www.textapp.net/SendSMS');
