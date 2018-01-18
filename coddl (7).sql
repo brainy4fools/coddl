@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jan 15, 2018 at 04:46 PM
+-- Generation Time: Jan 18, 2018 at 01:28 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.5.18
 
@@ -90,15 +90,17 @@ CREATE TABLE `IGS_bookings` (
   `BOOKING_END_DATE_TIME` varchar(512) NOT NULL,
   `color` varchar(512) NOT NULL,
   `CLIENT_MOBILE` varchar(255) NOT NULL,
-  `SERVICE_COST` varchar(255) NOT NULL
+  `SERVICE_COST` varchar(255) NOT NULL,
+  `schedul_date` varchar(255) NOT NULL,
+  `schedul_hour` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `IGS_bookings`
 --
 
-INSERT INTO `IGS_bookings` (`id`, `user_id`, `CLIENT_FIRST_NAME`, `CLIENT_LAST_NAME`, `STAFF_FIRST_NAME`, `STAFF_LAST_NAME`, `BOOKING_DATE_TIME`, `BOOKING_DATE`, `BOOKING_TIME`, `BOOKING_REFERENCE`, `SERVICE_NAME`, `BUSINESS_NAME`, `LOCATION_NAME`, `LOCATION_PHONE`, `BOOKING_END_DATE_TIME`, `color`, `CLIENT_MOBILE`, `SERVICE_COST`) VALUES
-(128, 4, 'Joe Blogs', 'Joe Blogs', 'karen', 'h', '2018-01-21T11:30:00', '2018-01-20', '12:15:00', '1DrCHWYd', 'Manicure', 'Company Name', 'x', '01234567891', '2018-01-21T12:00:00', 'blue', '01234567891', '10.00');
+INSERT INTO `IGS_bookings` (`id`, `user_id`, `CLIENT_FIRST_NAME`, `CLIENT_LAST_NAME`, `STAFF_FIRST_NAME`, `STAFF_LAST_NAME`, `BOOKING_DATE_TIME`, `BOOKING_DATE`, `BOOKING_TIME`, `BOOKING_REFERENCE`, `SERVICE_NAME`, `BUSINESS_NAME`, `LOCATION_NAME`, `LOCATION_PHONE`, `BOOKING_END_DATE_TIME`, `color`, `CLIENT_MOBILE`, `SERVICE_COST`, `schedul_date`, `schedul_hour`) VALUES
+(128, 4, 'Joe Blogs', 'Joe Blogs', 'karen', 'h', '2018-01-21T11:30:00', '2018-01-20', '12:15:00', '1DrCHWYd', 'Manicure', 'Company Name', 'x', '01234567891', '2018-01-21T12:00:00', 'blue', '01234567891', '10.00', '', 0);
 
 -- --------------------------------------------------------
 
@@ -779,7 +781,7 @@ CREATE TABLE `IGS_user` (
 --
 
 INSERT INTO `IGS_user` (`id`, `name`, `password`, `joindate`, `logins`, `is_logged_in`, `isadmin`, `companyid`, `company`, `email`, `number`, `activ_status`, `activ_key`, `logo`, `about`, `credits`, `permissiongroup`, `fullname`) VALUES
-(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 91, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 86, 1, ''),
+(4, 'admin', '$2y$10$KMouG0nlZffhDS6P6zTph.bTDZ14RDACmW7N8IcpNJ30wu3EatJRW', '2017-11-30', 92, 0, 1, 0, '', 'email@gmail.com', '', 0, '', '', '', 86, 1, ''),
 (5, 'sara', '$2y$10$NJ5AA9NEV9kTvAmPbCLq/.Kb5Fk6nsWN6Td1CKJ5.E7pAO5CKBO3K', '2018-01-02', 0, 0, 0, 0, '', 'sara@mail.com', '', 0, '', '', '', 0, 42, '');
 
 --
