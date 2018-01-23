@@ -64,7 +64,7 @@ class Calendar extends CI_Controller {
 
 
     //text anywhere test
-    public function send_text($message_name,$message,$recipient)
+    public function send_text($message_name,$message,$recipient,$unique_reference)
     {
 
 
@@ -86,9 +86,7 @@ class Calendar extends CI_Controller {
         //where the magic happens
         include('text-messaging/nusoap.php');
 
-        $random = "";
-        $random .= rand(100000000, 999999999);
-        $unique_reference = substr($random,0,10);
+        
 
         $parameters = array( 
             'returnCSVString' => 'false', 
@@ -247,15 +245,17 @@ class Calendar extends CI_Controller {
         $recipient = $CLIENT_MOBILE;
 
 
+        $random = rand(100000000, 999999999);
+        $unique_reference = $random;
 
 
-        $this->send_text($message_name,$message,$recipient);
+        $this->send_text($message_name,$message,$recipient,$unique_reference);
 
 
         //add to sent textes database
 
         $this->load->model('sent/sent_model');
-        $this->sent_model->add_sent('Your appointment was cancelled',$message,$recipient,'sent_on','1','unique_reference','600','status_desc','status_update',$BOOKING_REFERENCE,$STAFF_FIRST_NAME);
+        $this->sent_model->add_sent('Your appointment was cancelled',$message,$recipient,'sent_on','1',$unique_reference,'600','status_desc','status_update',$BOOKING_REFERENCE,$STAFF_FIRST_NAME);
 
 
         
@@ -328,13 +328,18 @@ class Calendar extends CI_Controller {
         $recipient = $CLIENT_MOBILE;
 
 
-        $this->send_text($message_name,$message,$recipient);
+        
+        $random = rand(100000000, 999999999);
+        $unique_reference = $random;
+
+
+        $this->send_text($message_name,$message,$recipient,$unique_reference);
 
 
         //add to sent textes database
 
         $this->load->model('sent/sent_model');
-        $this->sent_model->add_sent('Your appointment is confirmed',$message,$recipient,'sent_on','1','unique_reference','600','status_desc','status_update',$BOOKING_REFERENCE,$STAFF_FIRST_NAME);
+        $this->sent_model->add_sent('Your appointment is confirmed',$message,$recipient,'sent_on','1',$unique_reference,'600','status_desc','status_update',$BOOKING_REFERENCE,$STAFF_FIRST_NAME);
 
 
 
@@ -405,12 +410,17 @@ class Calendar extends CI_Controller {
         $recipient = $CLIENT_MOBILE;
 
 
-        $this->send_text($message_name,$message,$recipient);
+        $random = rand(100000000, 999999999);
+        $unique_reference = $random;
+
+
+
+        $this->send_text($message_name,$message,$recipient,$unique_reference);
 
         //add to sent textes database
 
         $this->load->model('sent/sent_model');
-        $this->sent_model->add_sent('Your appointment was resheduled',$message,$recipient,'sent_on','1','unique_reference','600','status_desc','status_update',$BOOKING_REFERENCE,$STAFF_FIRST_NAME);
+        $this->sent_model->add_sent('Your appointment was resheduled',$message,$recipient,'sent_on','1',$unique_reference,'600','status_desc','status_update',$BOOKING_REFERENCE,$STAFF_FIRST_NAME);
 
 
 

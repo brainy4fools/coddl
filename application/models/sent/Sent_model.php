@@ -20,8 +20,7 @@ class Sent_model extends CI_Model {
     public function add_sent($message_name,$message,$recipient,$sent_on,$type,$unique_reference,$status_code,$status_desc,$status_update,$booking_reference,$staff_name)
     {
     	$sent_on =  date('Y-m-d H:i:s');
-        $random = rand(100000000, 999999999);
-        $unique_reference = $random;
+        
 
 
 
